@@ -1,0 +1,77 @@
+@font-face {
+    font-family: GilE;
+    src: url(../fonts/Gilroy-FREE/Gilroy-FREE/Gilroy-ExtraBold.otf);
+  }
+  @font-face {
+    font-family: GilL;
+    src: url(../fonts/Gilroy-FREE/Gilroy-FREE/Gilroy-Light.otf);
+  }
+  @font-face {
+    font-family: ProductR;
+    src: url(../fonts/product-sans/Product\ Sans\ Regular.ttf);
+  }
+  @font-face {
+    font-family: ProductB;
+    src: url(../fonts/product-sans/Product\ Sans\ Bold.ttf);
+}
+
+/* Toast */
+
+.toast {
+    max-width: 450px;
+}
+
+.flash {
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 12px #00000029;
+    border-left: 6px solid #325981;
+    z-index: 1;
+}
+
+.flash .toast-header {
+    height: 40px;
+    border: none;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 0px #00000029;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.flash .toast-header strong {
+    padding-left: 58px;
+    color: #272727 !important ;
+    font-size: 20px;
+    font-family: ProductB !important;
+    font-weight: 500;
+}
+
+.flash .toast-body {
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.flash .toast-body .image {
+    padding: 0 5px 0 10px;
+    border-radius: 50%;
+    position: relative;
+    top: -26px;
+    width: 120px;
+    height: 120px;
+}
+
+.flash .toast-body .para {
+    text-align: justify;
+    padding: 5px 10px 5px 5px;
+    margin: 0;
+    color: #27272766 !important ;
+    font-size: 16px;
+    font-family: ProductR !important;
+}
+
+.flash .toast-body .view {
+    padding: 5px;
+    cursor: pointer;
+    color: #FD585C;
+    font-size: 18px;
+    font-family: ProductR !important;
+}

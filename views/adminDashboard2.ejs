@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/adminDashboard.css">
+
+        <title>10dem Education|Dashboard</title>
+        
+    </head>
+
+    <body>
+        
+        <div class="sidebar">
+            <div style="height: 100px;"></div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+        </div>
+
+        <div style="background: #FCFCFC;position: absolute;left: 70px;right: 0px;">
+
+            <header>
+                
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
+                        <img src="/public/img/logo.jpeg" style="width: 50px;height: 50px;">
+                        <p style="padding: 0 8px;"><%=orgname%><br/>Betterlife</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-left">
+                        <img src="/public/img/person_circle.svg" style="width: 40px;height: 40px;border-radius: 50%;">
+                        <p style="padding: 8px;font-size: 18px;"><%=name%></p>
+                    </div>
+                </div>
+                
+            </header>
+
+            <div class="container" style="max-width: 95%;padding: 25px 0;">
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="stats">
+                                <h1><%=totalnoofclasses%></h1>
+                                <p>Total Classes</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="stats">
+                                <h1><%=totalnoofeducators%></h1>
+                                <p>Total Educators</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="stats">
+                                <h1><%=totalnoofclasses%></h1>
+                                <p>Total Students</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="stats">
+                                <h1><%=totalnoofExtprojects%></h1>
+                                <p>Externally Collaborated Projects</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <a href="/adminexternalcollabs"><img src="/public/img/arrow-right.svg"></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="stats">
+                                <h1><%=totalnoofprojects%></h1>
+                                <p>Total Projects</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-left add-on">
+                            <img src="/public/img/add.svg">
+                            <a href="/classDetails"><p>Add Class</p></a>
+                        </div> 
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-left add-on">
+                            <img src="/public/img/add.svg">
+                            <a href="/orgdashboard/educators"><p>Add Educator</p></a>
+                        </div> 
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-left add-on">
+                            <img src="/public/img/add.svg">
+                            <a href="#"><p>Add Student</p></a>
+                        </div> 
+                    </div>
+                </div>
+    
+            </div>
+
+            <footer><p>10dem © 2020</p></footer>
+
+        </div>
+        <!-- end of container -->
+        
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+
+    </body>
+</html>

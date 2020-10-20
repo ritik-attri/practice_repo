@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="lib/owlcarousel/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="/public/css/educatorDashboard.css">
+    <link rel="stylesheet" href="/public/css/notificationpane.css">
+    <link rel="stylesheet" href="/public/css/flashMessage.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+
+    <title>10dem Education|Dashboard</title>
+</head>
+
+<body>
+    <header id="header">
+                
+        <nav id="nav-menu-container">
+
+            <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-left">
+                    <!-- <div id="logo">
+                    
+                        <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span></a>
+                        
+                    </div> -->
+                    <ul class="nav-menu">
+                        <li><a href="/home/">Home</a></li>
+                        <li><a href="/myprojects">Ongoing Project</a></li>
+                        <%if(role==''){%>
+                        <li class="menu-has-children dropdown-toggle"><a href="">Membership</a>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Pro</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="#" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Organization</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="#" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Non Profits</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="#" class="innertag">View all</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="position: relative;top: -3px;"><a href="#"><i class="fas fa-crown" style="color: rgb(233, 233, 3);"></i>Try 10dem pro</a></li>
+                        <%}%>
+                        <l1><a href="#" id="notifications"><img src="/public/img/notifications.svg"><span style="position: relative;right: 10px;bottom: 10px;padding: 2px 6px;border-radius: 50%;background: red;font-size: 14px;">2</span></a></l1>
+                    </ul>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a class="btn-primary" style="border-radius: 5px;position: relative;top: -6px;padding: 4px 8px 6px 8px;" href="/home/createproject/1"><i class="fas fa-plus" style="color: rgb(255, 255, 255);"></i>  Start Collaboration</a></li>
+                    <li class="menu-has-children dropdown-toggle navprofile" style="margin-top: 0;"><a href="#" style="color: #000;background: #FFFFFF;border-radius: 50%;height: 35px;width: 35px;text-align: center;padding: 7px;"><%=firstletter%></a>
+                        <ul style="right: 0 !important;left: auto !important;width: fit-content;padding-left: 1px !important;padding-right: 1px !important;padding-inline-start: 0px;background: #fff !important;">
+                            <li><a href="#">My profile</a></li>
+                            <li><a href="/">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        
+        </nav><!-- #nav-menu-container -->
+
+    </header><!-- #header -->
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/public/img/10-dem@2x.png" alt="">
+            </div>
+
+            <button type="button" id="sidebarCollapse" class="btn bg-light sidebutton">
+                <i id="collapse-icon" class="fas fa-angle-left" style="font-size: 50px;"></i>
+            </button>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/myprojects"><box-icon class="bx-fw" name="file"></box-icon> My Projects&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <li>
+                    <a href="/bookmarks"><box-icon class="bx-fw" name='bookmarks'></box-icon> Bookmarks&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <!-- <li>
+                    <a href="#"><box-icon class="bx-fw" name='folder' ></box-icon>    My Folders</a>
+                </li> -->
+                <li>
+                    <a href="#"><box-icon class="bx-fw" name='chat' ></box-icon> Conversations&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <%if(role=='educator'){%>
+                    <li>
+                        <a href="/educatordashboard"><box-icon class="bx-fw" name='user-circle' ></box-icon> Manage Students&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                <%}else if(role=='org'){%>
+                        <a href="/orgdashboard"><box-icon class="bx-fw" name='user-circle' ></box-icon> Manage Organization&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <%}else{%>
+
+                <%}%>
+                    <%if(orgname!=''){%>
+                    <li>
+                        <a href="/orgDetails"><box-icon class="bx-fw" name='book-reader'></box-icon><%=orgname%>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                    <%}%>
+            </ul>
+
+            <div class="learnMore">
+                <img src="/public/img/explore.svg">
+                <p>Hello <%=name%> <br/> Explore <span style="color: #FD585C;cursor: pointer;">Pro account</span> with Premium features.</p>
+                <button class="btn">Learn more</button>
+            </div>
+
+        </nav>
+
+
+        <!-- Page Content  -->
+        <div id="content" class="container">
+
+            <!-- <button type="button" id="sidebarCollapse" class="btn bg-light sidebutton">
+                <i id="collapse-icon" class="fas fa-angle-left" style="font-size: 60px;"></i>
+            </button> -->
+
+            <a href="#" class="float">
+                <img src="/public/img/help.svg" class="my-float" style="width: 30px;height: 30px;" alt="">
+            </a>
+
+
+            <div style="margin-left: 2%;">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" style="padding: 0;margin: 45px 0;">
+                      <li class="breadcrumb-item"><a href="/educatordashboard">Manage students</a></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="row" style="margin: 3rem 0;">
+                <div class="col-lg-9">
+
+                    <h2 style="padding: 15px;">My classes</h2>
+
+                    <div class="row">
+                        <div class="col-lg-6" style="text-align: center;">
+                            <div style="width: 100%;">
+                                <%if(orgname!=''){%>
+                                <div style="cursor: pointer;margin-bottom: 20px;height: 60px;background: #FD585C 0% 0% no-repeat padding-box;border-radius: 6px;">
+                                    <p style="padding: 10px 0;font-size: 24px;font-family: ProductR;letter-spacing: 0px;color: #FFFFFF;opacity: 1;"><img src="/public/img/pluswhite.svg"> Export Class</p>
+                                </div>
+    
+                                <p>--------------------------------Or--------------------------------</p>
+                                <%}%>
+                                <div class="d-flex justify-content-between">
+                                    <div style="cursor: pointer;width: 190px;height: 60px;padding: 15px 10px; box-shadow: 0px 10px 20px #8888882E;border: 2px solid #FD585C;border-radius: 6px;">
+                                        <p style="margin: 0;font-size: 18px;font-family: ProductR;letter-spacing: 0px;color: #FD585C;opacity: 1;"><img src="/public/img/redplus.svg" style="position: relative;bottom: 3px;">Add Student</p>
+                                    </div>
+                                    <div style="cursor: pointer;width: 190px;height: 60px;padding: 15px 10px; box-shadow: 0px 10px 20px #8888882E;border: 2px solid #FD585C;border-radius: 6px;" data-toggle="modal" data-target="#exampleModalCenter1">
+                                        <p style="margin: 0;font-size: 18px;font-family: ProductR;letter-spacing: 0px;color: #FD585C;opacity: 1;"><img src="/public/img/redplus.svg" style="position: relative;bottom: 3px;">Add Class</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%if(classesare==''){%>
+                            <h3 style='margin-left:5rem;'><%='No classes to show'%></h3>
+                        <%}else if(classesare.length==0){%>
+                            <h3 style='margin-left:5rem;'><%='No classes to show'%></h3>
+                        <%}else{%>
+                            <%for(let i=0;i<=classesare.length-1;i++){%>
+                        <div class="col-lg-3">
+                            <div class="classDetails">   
+                                <h3>Class <%=classesare[i].grade%><%=classesare[i].section%></h3>
+                                <p>Total Student</p>
+                                <%if(classesare[i].students.length!=0){%>
+                                <h1><%=classesare[i].students.length%></h1>
+                                <%}else{%>
+                                <p style="color:#FD585C;margin-top:1rem;"><span>+</span> Add Student</p>
+                                <%}%>
+                            </div>
+                        </div>
+                            <%}%>
+                        <%}%>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div style="width: 100%;">
+                        <input class="input100 flatpickr" name="startDate" style="display: none;">
+                    </div>
+
+                    <div style="width: 100%;">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-lg-6">
+                                <div style="height: 50px;padding: 40px 0;cursor: pointer;">
+                                    Assignments
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div style="height: 50px;padding: 40px 0;cursor: pointer;">
+                                    Meeting
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Physics</div>
+                                            <div class="sidetag1">8A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/clock.svg">
+                                            <p class="para2">Due Date</p>
+                                            <p class="para3">25 July, 2020</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Chemistry</div>
+                                            <div class="sidetag1">9A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Physics</div>
+                                            <div class="sidetag1">8A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Physics</div>
+                                            <div class="sidetag1">8A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Maths</div>
+                                            <div class="sidetag1">8A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/clock.svg">
+                                            <p class="para2">Due Date</p>
+                                            <p class="para3">25 July, 2020</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Physics</div>
+                                            <div class="sidetag1">9A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Computer</div>
+                                            <div class="sidetag1">8A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="pending">
+                                        <div class="d-flex justify-content-left">
+                                            <div class="sub">Physics</div>
+                                            <div class="sidetag1">7A</div>
+                                        </div>
+                                        <p class="para1">Have assigned "Telemedicine In healthcare"</p>
+                                        <div class="d-flex justify-content-left">
+
+                                            <img class="imagefix" src="img/submit.svg">
+                                            <p class="para2">Total Submission</p>
+                                            <p class="para3">25</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- modal starts -->
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+            <div class="modal-title">Create Class</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" style="text-align:justify">
+                <div class="row" style="margin: 1rem 0;">
+                    
+                    <div class="col-lg-12">
+    
+                        <h4>Class</h4>
+                        <img src="/public/img/expand.svg" style="position: absolute;top: 50px;right: 30px;z-index: 2;">
+                        <div class="dropdown">
+                            <input class="input100">
+                            <div class="dropdown-content" style="width: 100%;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 14px #00000029;border-radius: 6px;opacity: 1;">
+                                <div class="upcoming1" style="height: 200px;">
+                                    <a href="/addclass/4/A">Class 4A<p>Already Created by Mr John Doe</p></a>
+                                    <a href="/addclass/5/A">Class 5A<p></p></a>
+                                    <a href="/addclass/6/A">Class 6A<p>Already Created by Mr John Doe</p></a>
+                                    <a href="/addclass/7/A">Class 7A<p></p></a>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- <select class="search-slt" style="margin-bottom: 20px;">
+                            <option>Class 8</option>
+                            <option>Class 9</option>
+                            <option>Class 10</option>
+                            <option>Class 11</option>
+                        </select> -->
+
+                        <button type="button" class="btn modalbutton1" data-dismiss="modal" style="left: 0;display: block;margin: 0 auto;">Create</button>
+    
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+    <!-- modal ends -->
+
+
+    <!-- Toast for notification panel-->
+    <div class="allNotifications" id="notificationpane" data-autohide="false" style="display: none;">
+        <div class="toast-header">
+            <!-- <div class="d-flex justify-content-center"> -->
+                <img src="/public/img/togglebutton.svg">
+                <strong class="mr-auto text-primary">Notifications</strong>
+                <!-- <small class="text-muted">5 mins ago</small> -->
+                <button type="button" class="ml-2 mb-1 close" id="notificationClose" style="color: black;font-size: 30px;font-weight: 100;">&times;</button>
+            <!-- </div>    -->
+        </div>
+        <div class="toast-body">
+
+            <div class="upcoming1">
+                <a href="#" style="float: right;margin: 10px;">View All</a>
+                <p class="status">New</p>
+                <hr>
+                <%notifications.forEach(function(notification){%>
+                <div class="row">
+                    <div class="col-lg-1 pad">
+                        <div class="toastSymbol">
+                            <img src="/public/img/person_circle.svg">
+                        </div>
+                    </div>
+                    <div class="col-lg-11 pad">
+                        <div class="toastText">
+                            <%=notification.message%>
+                        </div>
+                        <div class="d-flex justify-content-left">
+                            <a href="/previewofproject/<%=notification.project_id%>"><button class="btn toastbuttons">View Project</button></a>
+                            <button class="btn toastbuttons">Accept</button>
+                            <button class="btn toastbuttons">Deny</button>
+                        </div>
+                        <small class="text-muted"><%=notification.time%></small>
+                    </div>
+                </div>
+                <%})%>
+
+
+            </div>
+            
+        </div>
+    </div>
+    <!-- toast ends -->
+
+        <div style="position: fixed; top: 70px; right: 10px;height: 100%;">
+            <div class="toast ml-auto flash" role="alert" data-delay="3000" data-autohide="true">
+                <%notifications.forEach(function(notification){%>
+                <div class="toast-header">
+                    
+                    <strong class="mr-auto">Collaboration Invitation</strong>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: black;font-size: 30px;font-weight: 100;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="toast-body">
+                    <div class="d-flex justify-content-left">
+                        <img src="/public/img/person_circle.svg" class="image">
+                        <div>
+                            <p class="para"><%=notification.message%></p>
+                            <a class="view" href="/previewofproject/<%=notification.project_id%>">View project</a>
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+
+
+    <footer>
+        <p>10dem © 2020</p>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+
+    <script src="/public/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $('.flatpickr').flatpickr({
+            inline: true/* margin-bottom: 10px; */
+        });
+
+        $('#notifications').click(function(){
+            $(".allNotifications").css('display','block');
+        });
+
+        $('#notificationClose').click(function(){
+            $(".allNotifications").css('display','none');
+        });
+
+        $('.toast').toast('show');
+
+    </script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: false,
+            margin: 1,
+            animateOut: 'fadeOut',
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

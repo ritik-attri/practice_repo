@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/adminDashboard.css">
+
+        <title>10dem Education|Dashboard</title>
+        <style>
+            .dropdown-submenu {
+              position: relative;
+            }
+            
+            .dropdown-submenu .dropdown-menu {
+              top: 0;
+              left: 100%;
+              margin-top: -1px;
+            }
+            /* Tooltip */
+            .tooltip {
+                position: relative;
+                display: inline-block;
+            }
+            .tooltip > .tooltip-inner {
+                max-width: 230px !important;
+                height: 60px !important;
+                padding: 10px;
+                margin: 0;
+                text-align: justify;
+                color: #000000;
+                line-height: 1.4rem;  
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                box-shadow: 0px 0px 3px #00000029;
+                border: 2px solid #FFDB64CC;
+                opacity: 1;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+        
+        <div class="sidebar">
+            <div style="height: 100px;"></div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+        </div>
+
+        <div style="background: #FCFCFC;position: absolute;left: 70px;right: 0px;">
+
+            <header>
+                
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
+                        <img src="/public/img/logo.jpeg" style="width: 50px;height: 50px;">
+                        <p style="padding: 0 8px;"><%=orgname%><br/>Betterlife</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-left">
+                        <img src="/public/img/person_circle.svg" style="width: 40px;height: 40px;border-radius: 50%;">
+                        <p style="padding: 8px;font-size: 18px;"><%=name%></p>
+                    </div>
+                </div>
+                
+            </header>
+
+            <div class="container" style="max-width: 95%;padding: 25px 0;">
+
+                <div class="d-flex justify-content-left">
+                    
+                    <img src="/public/img/apps.svg" style="width: 60px;height: 60px;padding: 10px;border-radius: 50%;background: #FD585C7F;">
+                    <h3 style="margin: 12px 0;">Class Details</h3>
+                    
+                </div>
+
+                <div class="row" style="width: 100%;height: 60px;margin: 2rem 0;">
+                    <div class="col-lg-2" style="padding: 0;">
+                        <button class="btn uploadCSV" data-toggle="modal" data-target="#exampleModalCenter1"><img src="/public/img/pluswhite.svg">Add Class</button>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <form action="/addClass" method="GET">
+                <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <div class="modal-title">Add Class</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" style="text-align:justify">
+                            <div class="row" style="margin: 1rem 0;">
+                                
+                                <div class="col-lg-4" style="border-right: 2px solid #70707029;padding: 0 45px 0 25px;">
+
+                                    <h4 style="padding-left: 0;">Select Class</h4>
+
+                                    <div class="dropdown" style="width: 100%;">
+                                        <div class="d-flex">
+                                            <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Assign class">
+                                            <img src="/public/img/expand.svg" style="float: right;position: absolute;top: 14px;right: 8px;">
+                                        </div>
+                                        <div class="dropdown-content" style="width: 100%;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 14px #00000029;border-radius: 6px;opacity: 1;top: 50px;">
+                                            <div class="upcoming1" style="height: 300px;">
+
+                                                <div id="custom-search-input2" style="position: relative;top: 0;">
+                                                    <div class="input-group col-lg-12">
+                                                        <input type="text" class="search-query form-control" placeholder="Search"/>
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-danger" type="button">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="class" value="1" id="0" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">Class 1</div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="class" value="2" id="1" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">Class 2</div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="class" value="3" id="2" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Class 3
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="class" value="4" id="3" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Class 4
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="class" value="5" id="4" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Class 5
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <h4 style="padding-left: 0;">Select Color  <img src="/public/img/info.svg" data-toggle="tooltip" style="position: relative;bottom: 5px;cursor: pointer;"></h4>
+
+                                    <div class="dropdown" style="width: 100%;">
+                                        <div class="d-flex">
+                                            <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Assign color">
+                                            <img src="/public/img/expand.svg" style="float: right;position: absolute;top: 14px;right: 8px;">
+                                        </div>
+                                        <div class="dropdown-content" style="padding: 10px 0;width: 100%;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 14px #00000029;border-radius: 6px;opacity: 1;top: 50px;">
+                                            <!-- <div class="upcoming1" style="height: 300px;"> -->
+
+                                                <div class="colorSection">
+                                                    <div class="d-flex justify-content-left">
+                                                        <input type="color" name="color">
+                                                        <div class="chooseColor" style="background: #00CDD5;"></div>
+                                                        <div class="chooseColor" style="background: #15484A;"></div>
+                                                        <div class="chooseColor" style="background: #9E5135;"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="colorSection">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="chooseColor" style="background: #FF7700;"></div>
+                                                        <div class="chooseColor" style="background: #175488;"></div>
+                                                        <div class="chooseColor" style="background: #0997E2;"></div>
+                                                        <div class="chooseColor" style="background: #6B6C2A;"></div>
+                                                        <div class="chooseColor" style="background: #FF686C;"></div>
+                                                        <div class="chooseColor" style="background: #707070;"></div>
+                                                        <div class="chooseColor" style="background: #192041;"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="colorSection">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="chooseColor" style="background: #EB9788;"></div>
+                                                        <div class="chooseColor" style="background: #FEB72B;"></div>
+                                                        <div class="chooseColor" style="background: #65587F;"></div>
+                                                        <div class="chooseColor" style="background: #006E37;"></div>
+                                                        <div class="chooseColor" style="background: #06BB9F;"></div>
+                                                        <div class="chooseColor" style="background: #1C0091;"></div>
+                                                        <div class="chooseColor" style="background: #79BAC1;"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                               
+                                            <!-- </div> -->
+
+                                        </div>
+                                    </div>
+
+                                    <h4 style="padding-left: 0;">Select Grade</h4>
+
+                                    <div class="dropdown" style="width: 100%;">
+                                        <div class="d-flex">
+                                            <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Assign grade">
+                                            <img src="/public/img/expand.svg" style="float: right;position: absolute;top: 14px;right: 8px;">
+                                        </div>
+                                        <div class="dropdown-content" style="width: 100%;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 14px #00000029;border-radius: 6px;opacity: 1;top: 50px;">
+                                            <div class="upcoming1" style="height: 300px;">
+
+                                                
+                                                <div id="custom-search-input2">
+                                                    <div class="input-group col-lg-12">
+                                                        <input type="text" class="search-query form-control" placeholder="Search"/>
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-danger" type="button">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            
+
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="grade" value="A" id="0" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">Grade A</div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="grade" value="B" id="1" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">Grade B</div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="grade" value="C" id="2" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Grade C
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="grade" value="D" id="3" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Grade D
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="memberfields">
+                                                    <div class="d-flex justify-content-left">
+                                                        <div class="memberfieldimage">
+                                                            <input type="checkbox" name="grade" value="E" id="4" class="inputcheck">
+                                                        </div>
+                                                        <div class="memberfieldname">
+                                                            Grade E
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                               
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <h4 style="padding-left: 0;">Name your class</h4>
+
+                                    <input class="input100" type="text" name="classname" placeholder="Enter your class name">
+    
+                                    <button type="submit" name="button" class="btn modalbutton1">Add</button>
+                
+                                </div>
+
+                                <div class="col-lg-8" style="padding-right: 0;">
+                                    <div class="upcoming2">
+                                        <div class="row" style="background: #FFFFFF;">
+                                            <!-- <div style="margin: 120px auto;text-align: center;">
+                                                <img src="/public/img/assignProject.png">
+                                                <p style="margin: 0;font-size: 20px;font-weight: 600;color: #272727;">Educator list will appear here</p>
+                                                <p style="margin: 0;font-size: 16px;">Start creating ..</p>
+                                            </div> -->
+
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+    
+                                                <div class="row" style="background: #FFFFFF;">
+                                                    <div class="col-lg-2">
+                                                        <div class="rowfields">
+                                                            <p><img src="/public/img/class.svg">Class</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="rowfields">
+                                                            <p><img src="/public/img/class.svg">Class Color</p>
+                                                        </div>
+                                                    </div>
+                                                </div>       
+
+                                            </div>
+                                            
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+                                                
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <div class="rowfields">
+                                                            <p>Class 9A</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-2">
+                                                        <div class="rowfields">
+                                                           
+                                                            <div class="d-flex justify-content-left">
+                                                                <div style="width: 5px;height: 24px;margin-left: 4px; background: yellow;">&nbsp;</div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-1">
+                                                        <div class="rowfields">
+                                                            <button class="btn"><img src="/public/img/close.svg"></button>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+
+                                            </div>
+
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <div class="rowfields">
+                                                            <p>Class 9A</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-2">
+                                                        <div class="rowfields">
+                                                           
+                                                            <div class="d-flex justify-content-left">
+                                                                <div style="width: 5px;height: 24px;margin-left: 4px; background: yellow;">&nbsp;</div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-1">
+                                                        <div class="rowfields">
+                                                            <button class="btn"><img src="/public/img/close.svg"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
+                </form>
+                <!-- Modal ENDS -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <div class="modal-title">Edit Class 9A</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" style="text-align:justify">
+                            <div class="row" style="margin: 1rem 0;">
+                                
+                                <div class="col-lg-4" style="border-right: 2px solid #70707029;padding: 0 45px 0 25px;">
+
+                                    <h4 style="padding-left: 0;">Class</h4>
+
+                                    <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Class 9" disabled>
+                                   
+                                    <h4 style="padding-left: 0;">Color</h4>
+
+                                    <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Light Blue" disabled>
+
+                                    <h4 style="padding-left: 0;">Grade</h4>
+
+                                    <input class="input100" id="subject" style="overflow-y: hidden;" placeholder="Grade A" disabled>
+                                   
+                                    <h4 style="padding-left: 0;">Class Name</h4>
+
+                                    <input class="input100" type="text" name="pass" placeholder="ABC" disabled>
+                
+                                </div>
+
+                                <div class="col-lg-8" style="padding-right: 0;">
+                                    <div class="upcoming2">
+                                        <div class="row" style="background: #FFFFFF;">
+                                            <!-- <div style="margin: 120px auto;text-align: center;">
+                                                <img src="/public/img/assignProject.png">
+                                                <p style="margin: 0;font-size: 20px;font-weight: 600;color: #272727;">Educator list will appear here</p>
+                                                <p style="margin: 0;font-size: 16px;">Start creating ..</p>
+                                            </div> -->
+
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+    
+                                                <h4 style="font-family: ProductR;font-size: 26px;padding-left: 12px;">Assigned Educators</h4> 
+
+                                            </div>
+                                            
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+                                                
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="rowfields">
+                                                            <p>Samyadeep Maneerattana</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <div class="rowfields">
+                                                            <p>Mathematics | Sustainable Dev...</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-1">
+                                                        <div class="rowfields">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="dropdown">
+                                                                    <button class="btn"><img src="/public/img/person_circle.svg"></button>
+                                                                    <div class="dropdown-content" style="top: 30px;right: 0;z-index: 6;min-width: 300px;padding: 20px;">
+
+                                                                        <div class="dropdown1">
+                                                                            <div class="d-flex">
+                                                                                <input class="input100" style="overflow-y: hidden;height: 40px;margin-bottom: 0;" placeholder="Select Educator">
+                                                                                <img src="/public/img/expand.svg" style="float: right;position: absolute;top: 8px;right: 8px;">
+                                                                            </div>
+                                                                            <div class="dropdown-content1" style="top: 40px;z-index: 6;width: 100%;">
+                                                                                
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+        
+                                                                            </div>
+                                                                        </div>
+                                                                        <div style="text-align: right;margin-top: 10px;">
+                                                                            <button class="btn selectEducator2">Cancel</button>
+                                                                            <button class="btn selectEducator1">Add</button>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <button class="btn"><img src="/public/img/delete3.svg"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+
+                                            </div>
+
+                                            <!-- module -->
+                                            <div class="col-lg-12">
+                                                
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="rowfields">
+                                                            <p>Samyadeep Maneerattana</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <div class="rowfields">
+                                                            <p>Mathematics | Sustainable Dev...</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-1">
+                                                        <div class="rowfields">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="dropdown">
+                                                                    <button class="btn"><img src="/public/img/person_circle.svg"></button>
+                                                                    <div class="dropdown-content" style="top: 30px;right: 0;z-index: 6;min-width: 300px;padding: 20px;">
+                                                                        
+                                                                        <div class="dropdown1">
+                                                                            <div class="d-flex">
+                                                                                <input class="input100" style="overflow-y: hidden;height: 40px;margin-bottom: 0;" placeholder="Select Educator">
+                                                                                <img src="/public/img/expand.svg" style="float: right;position: absolute;top: 8px;right: 8px;">
+                                                                            </div>
+                                                                            <div class="dropdown-content1" style="top: 40px;z-index: 6;width: 100%;">
+                                                                                
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+                                                                                <a href="#">John Doe</a>
+        
+                                                                            </div>
+                                                                        </div>
+                                                                        <div style="text-align: right;margin-top: 10px;">
+                                                                            <button class="btn selectEducator2">Cancel</button>
+                                                                            <button class="btn selectEducator1">Add</button>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <button class="btn"><img src="/public/img/delete3.svg"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12" style="text-align: center;">
+                                    <button type="button" class="btn modalbutton1" data-dismiss="modal" style="left: 0;">Update</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal ENDS -->
+                
+                <%if(classes!=[]){%>
+                <div class="row">
+                    <div class="col-lg-12" style="padding: 30px;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 6px #303030;border-radius: 8px;">
+                        <!-- opens on empty class -->
+
+                        <!-- <div style="text-align: center;margin: 50px 0;">
+                            <img src="/public/img/assignProject.png" style="margin: auto auto 20px auto">
+                            <p style="font-size: 22px;font-family: ProductB;color: #4A4A4A;margin: 0;">Empty Class</p>
+                            <p style="color: #FFDB64;font-size: 18px;">Lets start creating classes..</p>
+                            <button class="btn uploadCSV" style="border-radius: 50%;width: 70px;height: 70px;"><img src="/public/img/arrow.svg"></button>
+                        </div>         -->
+
+                        
+                        <div class="d-flex justify-content-left">
+                            <!--<div class="classes1">Class <%%></div>-->
+                        </div>
+                        
+    
+                        <div class="row">
+                            <%classes.forEach(function(classdocument){%>                            
+                            <div class="col-lg-3">
+                        
+                                <div class="classDetails1" style="box-shadow: 0px 3px 6px <%=classdocument.color%>;">
+                                    <div class="d-flex justify-content-between">
+                                        <h3>Class <%=classdocument.grade%><%=classdocument.section%></h3>
+                                        <div class="dropdown">
+                                            <img src="/public/img/more_ver.svg" style="cursor: pointer;">
+                                            <div class="dropdown-content" style="top: 25px;z-index: 6;font-size: 10px;">
+                                                <a href="#"><img src="/public/img/delete.svg" style="cursor: pointer;">Remove Class</a>
+                                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter2"><img src="/public/img/editblack.svg" style="cursor: pointer;">Edit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%if(classdocument.classname!=''){%>
+                                        <h3>Classname <%=classdocument.classname%></h3>
+                                    <%}%>
+                                    
+                                    <p>Total Student<span id="redheading"><%=classdocument.students.length%></span></p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="dropdown">
+                                            <img src="/public/img/person_circle.svg" class="educators1">
+                                            <img src="/public/img/person_circle.svg" class="educators2">
+                                            <img src="/public/img/person_circle.svg" class="educators3">
+                                            <img src="/public/img/person_circle.svg" class="educators4">
+                                            <div class="dropdown-content" style="top: 30px;z-index: 6;">
+                                                <a href="#">John Doe</a>
+                                                <a href="#">John Doe</a>
+                                                <a href="#">John Doe</a>
+                                                <a href="#">John Doe</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <%})%>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+
+            </div>
+
+            <footer><p>10dem © 2020</p></footer>
+
+        </div>
+        <!-- end of container -->
+
+        
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+        <script>
+            $('input[type="checkbox"]').on('change', function() {
+                $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip({title: '<p style="color: #272727;">Color code will be different for each class</p>', html: true, placement: "right"});
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <link rel="stylesheet" href="/public/css/payment.css">
+            
+        
+        <title>10dem Education|My Folder</title>
+    </head>
+
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-xl navbar-light">
+            <a class="navbar-brand" href="#">10dem Education</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ongoing Project</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Resources</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Membership
+                        </a>
+                        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div> -->
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <h5 class="innerhead">Pro</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershipro" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item">
+                                    <h5 class="innerhead">Organization</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershiporganization" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item">
+                                    <h5 class="innerhead">Non Profits</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershipnonprofit" class="innertag">View all</a>
+                                </li>
+                            </ul>
+                        </div>    
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-crown" style="color: rgb(233, 233, 3);padding-right: 10px;"></i>Try 10dem pro</a>
+                    </li> -->
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Contribute Resource</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-primary"  style="border-radius: 5px;" href="#"><i class="fas fa-plus" style="color: rgb(255, 255, 255);"></i>  Create Project</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link btn-primary" id="login" href="#">S</a>
+                    </li>
+                    <li class="nav-item dropdown" style="margin-left: -30px;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">My Profile</a>
+                            <a class="dropdown-item" href="#">Dashboard</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <a href="#" class="float">
+            <img src="/public/img/help.svg" class="my-float" style="width: 30px;height: 30px;" alt="">
+        </a>
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-4 text-center"></div>
+                <div class="col-lg-4 text-center">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li id="account">Details</li>
+                        <li id="personal">Set Up Plan</li>
+                        <li id="payment">Payment</li>
+                        <!-- <li id="confirm"><strong>Finish</strong></li> -->
+                    </ul>
+                    <!-- <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> -->
+    
+                </div>
+                <div class="col-lg-4 text-center"></div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-1"></div>
+
+                <div class="col-lg-6">
+                    <!-- accordian start -->
+                    
+                    <div class="accordion" id="accordionExample275">
+                        <div class="card z-depth-0 bordered" style="border: 2px solid #80808029;">
+                            <div class="card-header" id="headingOne2" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                                <!-- <div class="row">
+                                    <div class="col-lg-12"> -->
+                                        <div class="d-flex justify-content-left">
+                                            <div class="accordianProgress" id="accordianProgressA1">
+                                                1
+                                            </div>
+                                            <h4 class="accordianhead">
+                                                Account Details
+                                            </h4>
+                                           
+                                        </div>
+   
+                                    <!-- </div> -->
+                                    <!-- <div class="col-lg-4 pad">
+                                        <p style="text-align: right;line-height: 6.7em;">Already have an account ? <span id="redheading">Sign In</span></p>
+                                    </div> -->
+                                <!-- </div> -->
+                            </div>
+                            <div id="collapseOne2" class="collapse show" aria-labelledby="headingOne2" data-parent="#accordionExample275">
+                                <div class="card-body">
+                                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                                        <!-- <h2 id="heading">Sign Up Your User Account</h2>
+                                        <p>Fill all form field to go to next step</p> -->
+                                        <p style="text-align: right;margin-bottom: 30px;font-size: 17px;">Already have an account ? <span id="redheading"><a href="#">Sign In</a></span></p>
+                                        <form id="msform" method="POST" action="/role/<%=id%>">
+                                            <fieldset>
+                                            <form method="POST" action="/role/<%=id%>">
+                                                <div class="form-card">
+                                                    <div class="row">
+                                                        <!-- <div class="col-7">
+                                                            <h2 class="fs-title">Account Information:</h2>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <h2 class="steps">Step 1 - 4</h2>
+                                                        </div> -->
+                                                        
+                                                        <div class="col-lg-6">
+                                                            <label class="fieldlabels">Full Name</label> 
+                                                            <input type="text" name="Name" value="<%=name%>" />
+                                                            <label class="fieldlabels">Email</label> 
+                                                            <input type="email" name="email" value="<%=email%>" />
+                                                            <%if(id!=0){%>
+                                                            <label class="fieldlabels">Name of Institution</label> 
+                                                            <input type="text" name="Org_name" placeholder="" /> 
+                                                            <%}%>
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            
+                                                            <label class="fieldlabels">Contact Number (Optional)</label> 
+                                                            <input type="number" name="number" placeholder="" /> 
+                                                            
+                                                            
+                                                            <label class="fieldlabels">Country</label> 
+                                                            <input type="country" name="country" placeholder="" />
+                                                                                                                        
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="d-flex justify-content-left">
+                                                                <input type="checkbox" name="" style="width: 20px;height: 20px;margin-right: 10px;">
+                                                                <p style="font-size: 19px;">Sign <span id="redheading"><a href="#">Code of Conduct</a></span> & <span id="redheading"><a href="#">Data Policy</a></span> (Mandatory, kindly read before submitting this form)</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                    <button type="submit" id="A1" name="next" class="action-button" >Continue</button>
+                                                
+                                            </form>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="card z-depth-0 bordered" style="border: 2px solid #80808029;">
+                            <div class="card-header" id="headingTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <div class="d-flex justify-content-left">
+                                            <div class="accordianProgress" id="accordianProgressA2">
+                                                2
+                                            </div>
+                                            <h4 class="accordianhead">
+                                                Set up plan
+                                            </h4>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>      
+                            </div>
+                            <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionExample275">
+                                <div class="card-body">
+                                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                                    <form id="msform">
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                       <div class="text-center plans" id="planP1">
+                                                            <div class="form-field">
+                                                                <input type="radio" id="P1" class="product-list" name="radio-button" style="width: 20px;height: 20px;margin-top: 15px;">                                                           
+                                                                <p>Monthly</p>
+                                                                <h4>US $ 54/m</h4>
+                                                                <p><img src="/public/img/plus.svg">Extra tax</p>
+                                                            </div>                                                            
+                                                       </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="text-center plans" id="planP2">
+                                                            <div class="form-field">
+                                                                <input type="radio" id="P2" class="product-list" name="radio-button" style="width: 20px;height: 20px;margin-top: 15px;">                                                          
+                                                                <p>Yearly</p>
+                                                                <h4>US $ 540</h4>
+                                                                <p><img src="/public/img/plus.svg">Extra tax</p>
+                                                            </div>                                                            
+                                                       </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <input type="submit" id="A2" name="next" class="next action-button" value="Continue" />
+                                            <!-- <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> -->
+                                        </fieldset>
+                                        
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="card z-depth-0 bordered" style="border: 2px solid #80808029;">
+
+                            <div class="card-header" id="headingThree2" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                                <div class="row">
+
+                                    <div class="col-lg-12">
+
+                                        <div class="d-flex justify-content-left">
+                                            <div class="accordianProgress" id="accordianProgressA3">
+                                                3
+                                            </div>
+                                            <h4 class="accordianhead">
+                                                Payment
+                                            </h4>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>      
+                            </div>
+                            <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample275">
+                                <div class="card-body">
+                                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                                    <form id="msform">
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h4>Select a payment method</h4>
+                                                        <hr/>
+                                                        <div class="row">
+                                                            <div class="col-lg-3">
+                                                                <input type="radio" id="M1" class="pay-list" name="" style="width: 20px;height: 20px;margin-top: 15px;">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <p style="font-size: 16px;margin-top: 12px;">Payment card</p>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="d-flex justify-content-left">
+                                                                    <img src="/public/img/visa.png" class="imagefix" id="visa">
+                                                                    <img src="/public/img/mastercard.png" class="imagefix" id="mastercard">
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            <div class="col-lg-3">
+                                                                <input type="radio" id="M2" class="pay-list" name="" style="width: 20px;height: 20px;margin-top: 15px;">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <p style="font-size: 16px;margin-top: 12px;">Paypal</p>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="d-flex justify-content-left">
+                                                                    <img src="/public/img/paypal.png" class="imagefix" id="paypal">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                    </div>
+                                                    <div class="col-7" id="modeM1" style="display: none;">
+                                                        <label class="fieldlabels">Name On Card</label> 
+                                                        <input type="text" name="" placeholder="" />
+                                                        <label class="fieldlabels">Card Number</label> 
+                                                        <input type="number" name="" placeholder="" />
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label class="fieldlabels">Expiry Month</label> 
+                                                                <input type="number" name="" placeholder="MM" /> 
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label class="fieldlabels">Expiry Year</label> 
+                                                                <input type="number" name="" placeholder="YY" />
+                                                            </div>
+                                                        </div>
+                                                        <label class="fieldlabels">CVV</label> 
+                                                        <input type="password" name="" placeholder="" /><span><img src="/public/img/credit-card-with-cvv-code.png" style="height: 35px;width: 35px;position: relative;bottom: 65px;float: right;margin-right: 10px;"></span>
+                                                        <div class="d-flex justify-content-left">
+                                                            <input type="checkbox" name="" style="width: 20px;height: 20px;margin-right: 10px;">
+                                                            <p style="font-size: 19px;">I agree to the <span id="redheading"><a href="#">License Terms</a></span> and <span id="redheading"><a href="#">User Terms</a></span>.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-7" id="modeM2" style="display: none;">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="button" id="A3" name="next" class="next action-button" value="Complete Order" />
+                                            <!-- <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> -->
+                                        </fieldset>
+                                    </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- accordian ends -->
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="orderSummary">
+                        <h1>Order Summary</h1>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4>Plan</h4>
+                                <p><%=membershipname%></p>
+                                <div style="height: 50px;"></div>
+                                <h4>Subtotal</h4>
+                                <h4>Tax</h4>
+                                <div style="height: 50px;"></div>
+                                <h4>Total amount</h4>
+                            </div>
+                            <div class="col-lg-4">
+                                
+                            </div>
+                            <div class="col-lg-4">
+                                <h4>Price</h4>
+                                <p>US $ <%=price%></p>
+                                <div style="height: 50px;"></div>
+                                <p>US $ <%=price%></p>
+                                <p>US $ 20</p>
+                                <div style="height: 60px;"></div>
+                                <h4>US $ <%=price+20%></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1"></div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>10dem © 2020</p>
+        </footer>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+        <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+
+        <script src="/public/js/payment.js"></script>
+        <script>
+            $('.next').click(function(){  
+                    
+                var idName=$(this).attr('id')
+                $("#accordianProgress"+idName).css({"border-color": "#008D2F"});
+                  
+            })
+
+            $('.product-list').on('change', function() {
+
+                $('.product-list').each(function(){
+                    $(this).prop('checked', false);
+   
+                    var idName=$(this).attr('id')
+                    $('#plan'+idName).css('border-color','#80808029');
+                       
+                })
+
+                $(this).prop('checked', true);
+                var idName=$(this).attr('id')
+
+                $("#plan"+idName).css({"border-color": "#FD585CCC"})
+
+            });
+
+            $('.pay-list').on('change', function() {
+
+                $('.pay-list').each(function(){
+                    $(this).prop('checked', false);
+
+                    var idName=$(this).attr('id')
+                    $('#mode'+idName).css('display','none');
+                    
+                })
+
+                $(this).prop('checked', true);
+                var idName=$(this).attr('id')
+
+                $('#mode'+idName).css('display','block');
+
+            });
+
+        </script>
+
+    </body>
+</html>

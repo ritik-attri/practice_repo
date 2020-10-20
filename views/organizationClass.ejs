@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="/public/css/organization.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+   
+    <title>10dem Education|Organization</title>
+    <style>
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip > .tooltip-inner {
+            height: 70px !important;
+            padding: 10px;
+            text-align: justify;
+            color: #000000;
+            line-height: 2rem; 
+            
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 0px 3px #00000029;
+            border: 2px solid #FFDB64CC;
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header id="header">
+                
+        <nav id="nav-menu-container">
+
+            <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-left">
+                    <!-- <div id="logo">
+                    
+                        <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span></a>
+                        
+                    </div> -->
+                    <ul class="nav-menu">
+                        <li><a href="/home/">Home</a></li>
+                        <li><a href="/myprojects">Ongoing Project</a></li>
+                        <%if(role==''){%>
+                        <li class="menu-has-children dropdown-toggle"><a href="">Membership</a>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Pro</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershippro" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Organization</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershiporganization" class="innertag">View all</a>
+                                </li>
+                                <li class="nav-item navMember">
+                                    <h5 class="innerhead">Non Profits</h5>
+                                    <p class="innerpara">Proin iaculis purus consequat sem cure digni ssim donec porttitora.</p>
+                                    <a href="/membershipnonprofit" class="innertag">View all</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="position: relative;top: -3px;"><a href="#"><i class="fas fa-crown" style="color: rgb(233, 233, 3);"></i>Try 10dem pro</a></li>
+                        <%}%>
+                        <l1><a href="#"><img src="/public/img/notifications.svg"><span style="position: relative;right: 10px;bottom: 10px;padding: 2px 6px;border-radius: 50%;background: red;font-size: 14px;">2</span></a></l1>
+                    </ul>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a class="btn-primary" style="border-radius: 5px;position: relative;top: -6px;padding: 4px 8px 6px 8px;" href="/home/createproject/1"><i class="fas fa-plus" style="color: rgb(255, 255, 255);"></i>  Start Collaboration</a></li>
+                    <li class="menu-has-children dropdown-toggle navprofile" style="margin-top: 0;"><a href="#" style="color: #000;background: #FFFFFF;border-radius: 50%;height: 35px;width: 35px;text-align: center;padding: 7px;"><%=firstletter%></a>
+                        <ul style="right: 0 !important;left: auto !important;width: fit-content;padding-left: 1px !important;padding-right: 1px !important;padding-inline-start: 0px;background: #fff !important;">
+                            <li><a href="#">My profile</a></li>
+                            <li><a href="/">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        
+        </nav><!-- #nav-menu-container -->
+
+    </header><!-- #header -->
+
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/public/img/10-dem@2x.png" alt="">
+            </div>
+
+            <button type="button" id="sidebarCollapse" class="btn bg-light sidebutton">
+                <i id="collapse-icon" class="fas fa-angle-left" style="font-size: 50px;"></i>
+            </button>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/myprojects"><box-icon class="bx-fw" name="file"></box-icon> My Projects&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <li>
+                    <a href="/bookmarks"><box-icon class="bx-fw" name='bookmarks'></box-icon> Bookmarks&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <!-- <li>
+                    <a href="#"><box-icon class="bx-fw" name='folder' ></box-icon>    My Folders</a>
+                </li> -->
+                <li>
+                    <a href="#"><box-icon class="bx-fw" name='chat' ></box-icon> Conversations&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <%if(role.isEducator){%>
+                    <li>
+                        <a href="/educatordashboard"><box-icon class="bx-fw" name='user-circle' ></box-icon> Manage Students&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                <%}else if(role.isOrg||role.isNPOrg){%>
+                    <li>
+                        <a href="/orgdashboard"><box-icon class="bx-fw" name='user-circle' ></box-icon> Manage Org&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                <%}else{%>
+
+                <%}%>
+                <%if(orgname!=''){%>
+                    <li>
+                        <a href="/orgDetails"><box-icon class="bx-fw" name='book-reader'></box-icon> <%=orgname%>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
+                <%}%>
+            </ul>
+
+            <div class="learnMore">
+                <img src="/public/img/explore.svg">
+                <p>Hello <%=name%><br/> Explore <span style="color: #FD585C;cursor: pointer;">Pro account</span> with Premium features.</p>
+                <button class="btn">Learn more</button>
+            </div>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="container">
+
+            <!-- <button type="button" id="sidebarCollapse" class="btn bg-light sidebutton">
+                <i id="collapse-icon" class="fas fa-angle-left" style="font-size: 60px;"></i>
+            </button> -->
+
+            <a href="#" class="float">
+                <img src="/public/img/help.svg" class="my-float" style="width: 30px;height: 30px;" alt="">
+            </a>
+
+            
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home/">Home</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#">My Projects</a></li> -->
+                    <li class="breadcrumb-item active" aria-current="page">Organization</li>
+                </ol>
+            </nav>
+
+            <div class="d-flex justify-content-left">
+                <!-- <div class="col-lg-1"> -->
+                    <img src="/public/img/apps.svg" style="width: 60px;height: 60px;padding: 10px;border-radius: 50%;background: #FD585C7F;">
+                <!-- </div> -->
+                <!-- <div class="col-lg-11"> -->
+                    <div class="row" style="width: 80%;">
+                        <div class="col-lg-12">
+                            <h2 style="margin: 12px 0;">Organization Detail</h2>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/orgDetails"><p class="navtabs" style="color: #FD585C;border-bottom: 4px solid #FD585C;">Class (<%=classesare.length%>)</p></a>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/orgDetails/educators"><p class="navtabs">Educators (<%=educators%>)</p></a>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+
+            
+            
+            <div class="row" style="margin: 3rem 0;padding: 35px 20px;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 0px 12px #00000029;border-radius: 6px;">
+
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="custom-search-input">
+                                <div class="input-group col-lg-12 pad">
+                                    <input type="text" placeholder="Search by Grade, class , educator" class="search-query form-control"/>
+                                    <span class="input-group-btn" style="position: relative;right: 40px;">
+                                        <button class="btn btn-danger" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  -->
+
+                <!--  -->
+
+                <div class="col-lg-12">
+                    <!--<div class="d-flex justify-content-left">
+                        <div class="classes">Class 8</div>
+                        <div class="exported d-flex justify-content-between">
+                            <img class="successSymbol" src="/public/img/done.svg">
+                            <p class="successp1"><span>Class 8A</span> successfully exported to your class</p>
+                            <a class="successp2">Undo</a>
+                            <span class="successp3">x</span>
+                        </div>
+                    </div>-->
+                    
+
+                    <div class="row">
+                        <%classesare.forEach(function(document){%>
+                        <div class="col-lg-3">
+                    
+                            <div class="classDetails">
+                                <h3>Class <%=document.grade%><%=document.section%></h3>
+                                <p>Total Student<span id="redheading"><%=document.students.length%></span></p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="dropdown">
+                                        <img src="/public/img/person_circle.svg" class="educators1">
+                                        <img src="/public/img/person_circle.svg" class="educators2">
+                                        <img src="/public/img/person_circle.svg" class="educators3">
+                                        <img src="/public/img/person_circle.svg" class="educators4">
+                                        <div class="dropdown-content">
+                                            <a href="#">John Doe</a>
+                                            <a href="#">John Doe</a>
+                                            <a href="#">John Doe</a>
+                                            <a href="#">John Doe</a>
+                                        </div>
+                                    </div>
+                                    <a href="#"><img src="/public/img/language.svg" data-toggle="tooltip"></a>
+                                    
+                                </div>
+                            </div>
+        
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+   
+
+    <footer>
+        <p>10dem © 2020</p>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+
+    <script src="/public/js/index.js"></script>
+    <script>
+        $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip({title: '<p style="color: #272727;">Export this class under your class section</p>', html: true, placement: "top"});
+        })
+    </script>
+ 
+</body>
+
+</html>
