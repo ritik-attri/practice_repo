@@ -364,11 +364,19 @@ app.get('/orgDetails',function(req,res){
 /*##################################
   ######Org Details Educators#######
   ################################## */
-app.get('/orgDetails/educators',function(req,res){
+app.get('/orgDetails/educators',async function(req,res){
   if(sess.user_data==undefined){
     res.redirect('/');
   }else{
-    //here goes the module for this
+    var req_data =[]
+    console.log("Started")
+    var resp = await PorNPORG.find({org_name:sess.user_data.role_Data.org_name})
+    for(i of resp[0].Educators){
+      var found_data = await user.find({_id:i})
+      req_data.push(found_data)
+    }
+    console.log("Required educator data is", req_data)
+    res.render("organizationEducator",{role:sess.user_data.user.Role,org_name:resp[0].org_name,name:sess.user_data.user.username,data:resp[0],educators:req_data})
   }
 })
 /*##################################
