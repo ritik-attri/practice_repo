@@ -288,35 +288,80 @@ app.get('/home/',function(req,res){
    #######EDUCATOR DASHBOARD######
    ###############################*/
 app.get('/educatordashboard',function(req,res){
-  
   if(sess.user_data==undefined){
     res.redirect('/');
   }else{
     let first_letter=sess.user_data.user.username.split('');
-    /**/ if(sess.user_data.role_Data.classes.length==0){
-      res.render('educatorDashboard',{classesare:[],firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:'',notifications:sess.user_data.user.notifications});
+    if(sess.user_data.user.Role.isEducator==true){
+      if(sess.user_data.role_Data.classes.length==0){
+        res.render('educatorDashboard',{classesare:[],firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:sess.user_data.role_Data.org_name,notifications:sess.user_data.user.notifications});
+      }else{
+        let classes_are=[];
+        let count=0;
+        sess.user_data.role_Data.classes.forEach(function(document){
+          classes.findById(document,function(err,single_class){
+            classes_are.push(single_class);
+            count++;
+            console.log('Count:- '+count+' Classes length:- '+sess.user_data.role_Data.classes.length)
+            if(count==sess.user_data.role_Data.classes.length){
+              res.render('educatorDashboard',{classesare:classes_are,firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:sess.user_data.role_Data.org_name,notifications:sess.user_data.user.notifications});
+            }
+          })
+        })
+      }
     }else{
       classes_are=[];
-      sess.user_data.role_Data.classes.forEach(element => {
-        console.log(element);
-        classes.findById(element,function(err,single_class){
-          if(err){
-            console.log('Cant get any classes'+err);
-          }else{
-            classes_are.push(single_class);
-            console.log(single_class);
-            console.log(classes_are);
-            console.log(classes_are.length==sess.user_data.role_Data.classes.length);
-            if(classes_are.length==sess.user_data.role_Data.classes.length){
-              console.log('Classes are:- '+classes_are);
-              res.render('educatorDashboard',{classesare:classes_are,firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:'',notifications:sess.user_data.user.notifications});
+      if(sess.user_data.role_Data.classes.length==0){
+        res.render('educatorDashboard',{classesare:[],firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:'',notifications:sess.user_data.user.notifications});
+      }else{
+        sess.user_data.role_Data.classes.forEach(element => {
+          console.log(element);
+          classes.findById(element,function(err,single_class){
+            if(err){
+              console.log('Cant get any classes'+err);
+            }else{
+              classes_are.push(single_class);
+              console.log(single_class);
+              console.log(classes_are);
+              console.log(classes_are.length==sess.user_data.role_Data.classes.length);
+              if(classes_are.length==sess.user_data.role_Data.classes.length){
+                console.log('Classes are:- '+classes_are);
+                res.render('educatorDashboard',{classesare:classes_are,firstletter:first_letter[0],name:sess.user_data.user.username,role:'educator',orgname:'',notifications:sess.user_data.user.notifications});
+              }
             }
-          }
-        })
-      });
-  }
+          })
+        });
+      }
+    }
 } 
 });
+/*##################################
+  ##########EXPORT CLASSES##########
+  ################################## */
+  app.get('/exportclass/:id',function(req,res){
+    if(sess.user_data==undefined){
+      res.redirect('/');
+    }else{
+      classes_now=sess.user_data.role_Data.classes;
+      classes_now.push(req.params.id);
+      let obj={
+        classes:classes_now,
+      }
+      educatoror10dempro.findOneAndUpdate({_id:sess.user_data.user.Role_object_id},{$set:obj},{new:true},function(err,resp){
+        if(err){
+          console.log(err);
+        }else{
+          sess.user_data.role_Data=resp;
+          console.log('################################################\n            Current session data              \n #############################################\n '+util.inspect(sess.user_data));
+          if(sess.user_data.user.Role.isEducator==true){
+            res.redirect('/educatordashboard');
+          }else{
+            res.redirect('/orgDetails');
+          }  
+        }
+      })
+    }
+  })
 /*##################################
   ######Organisation Details########  
   ################################## */
