@@ -507,6 +507,50 @@ app.get('/orgdashboard/educators',function(req,res){
     }
   }
 })
+/*################################
+  #####ORG PROFILE SETTINGS#######
+  ################################ */
+app.get('/orgprofile/profile',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    console.log('######################################\n INSIDE /orgprofile/profile \n ###############################################\n');
+    console.log(sess.user_data);
+    let first_letter=sess.user_data.user.username.split('');
+    res.render('adminProfile1',{id:sess.user_data.user._id,name:sess.user_data.user.username,orgname:sess.user_data.role_Data.org_name,phonenumber:sess.user_data.role_Data.phone_Number,email:sess.user_data.user.email})
+  }
+})
+/*#################################
+  ##HANDLING ORG PROFILE UPDATES###
+  #################################*/
+app.post('/updateorgprofile/:id',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    console.log('In post request /updateorgprofile/:id:- '+req.body);
+    if(req.body.Firstname+' '+req.body.Lastname!=req.body.name){
+      res.redirect('/orgprofile/profile');
+    }else{
+      let obj={
+        username:req.body.name,
+        email:req.body.email,
+      }
+      user.findOneAndUpdate({_id:req.params.id},{$set:obj},{new:true},function(err,resp){
+        sess.user_data.user=resp;
+        console.log(sess.user_data.user);
+        let obj1={
+          phone_Number:req.body.phone_Number,
+        };
+        console.log(resp.Role_object_id);
+        PorNPORG.findOneAndUpdate({_id:resp.Role_object_id},{$set:obj1},{new:true},function(err,resp){
+          sess.user_data.role_Data=resp;
+          console.log('Org :='+resp);
+          res.redirect('/orgprofile/profile');
+        })
+      })
+    }
+  }
+})
 /*#################################
   ##########Class details##########
   ################################# */
@@ -612,33 +656,41 @@ app.get('/adminexternalcollabs',function(req,res){
   if(sess.user_data==undefined){
     res.redirect('/');
   }else{
+    let first_letter=sess.user_data.user.username.split('');
     if(sess.user_data.role_Data.Educators.length==0){
       res.render('adminEC',{name:sess.user_data.user.username,firstletter:first_letter[0],hide_manage_students:false,org_name:sess.user_data.role_Data.org_name,role:'org',projects:[]});
     }else{
+      console.log('Getting in /adminexternalcollab else else condition.Number of Educators are :- '+sess.user_data.role_Data.Educators.length);
       let ext_collb_proj=[];
       let count=0;
       sess.user_data.role_Data.Educators.forEach(function(document){
-        count++;
         user.find({_id:document},function(err,educator){
-          console.log('educator incoming:- '+ educator[0]);
+          //console.log('###########################################\n ###########educator incoming:-##############\n ##################################### '+ educator[0]);
           if(educator[0].Projects.length==0){
-
-          }else if(educator[0].Projects.length!=0){
+            count++;
+            console.log('###########################################\n ##############No projects for this educator:-############\n ###########################################\n '+count);
+          }else{
+            count++;
+            let count1=0;
+            console.log('Count:- '+count+' number of educators:- '+ sess.user_data.role_Data.Educators.length+' number of projects of this educator:- '+educator[0].Projects.length);
             educator[0].Projects.forEach(function(document1){
               project.findById(document1,function(err,resp){
+                count1++;
                 if(err){
                   console.log('Error while getting projects in /adminexternalcollabs in else else else:- '+err);
                 }else{
+                  console.log('###############################################\n###########INCOMING PROJECTS##################\n###############################################\n'+resp.collaboration.length!=0);
                   if(resp.collaboration.length!=0){
                     ext_collb_proj.push(resp);
                   }
+                  console.log('Count at if condition:- '+count+' Number of Educators:- '+sess.user_data.role_Data.Educators.length+' count1 at if condition:- '+count1+' projects length of this educator:- '+educator[0].Projects.length);
+                  if(count==sess.user_data.role_Data.Educators.length&&count1==educator[0].Projects.length){
+                      console.log('##################################\n#################INCOMING PROJECTS#######################\n######################################\n'+ext_collb_proj);
+                      res.render('adminEC',{name:sess.user_data.user.username,firstletter:first_letter[0],hide_manage_students:false,org_name:sess.user_data.role_Data.org_name,role:'org',projects:ext_collb_proj});
+                  }                  
                 }
               })
             })
-          }else if(count==sess.user_data.role_Data.Educators.length){
-            if(sess.user_data.user.Role.isNPOrg||sess.user_data.user.Role.isOrg){
-              res.render('adminEC',{name:sess.user_data.user.username,firstletter:first_letter[0],hide_manage_students:false,org_name:sess.user_data.role_Data.org_name,role:'org',projects:ext_collb_proj});
-            }
           }
         })
       })

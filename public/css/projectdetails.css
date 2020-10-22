@@ -358,36 +358,39 @@ button:focus {
 
 .entity {
     margin-bottom: 30px;
-    padding: 10px;
+    /* padding: 10px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 6px #00000029;
-    border-radius: 5px;
+    box-shadow: 0px 0px 3px #00000029;
+    border-radius: 4px;
     opacity: 1;
 }
 
 .memberfieldname {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 3px;
 }
 
 .memberfieldimage1 { 
-    width: 44px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    font-size: 16px;
-    padding: 9px;
-    color: #272727 !important;
+    margin-top: 15px;
+    /* font-size: 16px; */
+    /* padding: 9px; */
+    /* color: #272727 !important; */
     border-radius: 50%;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #FD585C80;
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    /* border: 1px solid #FD585C80; */
     opacity: 1;
   
 }
 
 .memberfieldname p {
     margin: 0;
-    font-size: 22px;
-    font-family: ProductR;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-family: ProductB;
     letter-spacing: 0px;
     color: #272727;
     opacity: 1;
@@ -397,6 +400,12 @@ button:focus {
     margin: 0;
     font-size: 16px;
     color: #707070;
+}
+
+.submission {
+    font-size: 14px;
+    color: #272727;
+    margin: 0 10px;
 }
 
 .submissionDate {
@@ -474,7 +483,7 @@ button:focus {
 /* Radio Button */
 
 /* Customize the label (the container) */
-    .container1 {
+    /* .container1 {
     float: right;
     position: relative;
     padding-left: 40px;
@@ -484,19 +493,19 @@ button:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+  } */
   
   /* Hide the browser's default radio button */
-  .container1 input {
+  /* .container1 input {
     position: absolute;
     opacity: 0;
     cursor: pointer;    
     height: 0;
     width: 0;
-  }
+  } */
   
   /* Create a custom radio button */
-  .checkmark {
+  /* .checkmark {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -506,31 +515,31 @@ button:focus {
     background-color: #eee;
     border-radius: 50%;
   }
-  
+   */
   /* On mouse-over, add a grey background color */
-  .container1:hover input ~ .checkmark {
+  /* .container1:hover input ~ .checkmark {
     background-color: #ccc;
-  }
+  } */
   
   /* When the radio button is checked, add a blue background */
-  .container1 input:checked ~ .checkmark {
+  /* .container1 input:checked ~ .checkmark {
     background-color: #34B53A;
-  }
+  } */
   
   /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
+  /* .checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+  } */
   
   /* Show the indicator (dot/circle) when checked */
-  .container1 input:checked ~ .checkmark:after {
+  /* .container1 input:checked ~ .checkmark:after {
     display: block;
-  }
+  } */
   
   /* Style the indicator (dot/circle) */
-  .container1 .checkmark:after {
+  /* .container1 .checkmark:after {
     top: 10px;
     left: 15px;
     width: 9px;
@@ -540,4 +549,4 @@ button:focus {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+  } */

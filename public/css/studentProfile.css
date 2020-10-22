@@ -253,7 +253,7 @@
 .input100 {
     display: block;
     width: 100%;
-    height: 50px;
+    height: 45px;
     padding: 0 5px;
     outline: none;
     margin-bottom: 30px;
@@ -392,11 +392,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #22CE5B;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #22CE5B;
 }
 
 input:checked + .slider:before {
@@ -552,5 +552,181 @@ button.close {
   font-size: 20px;
   font-family: ProductB;
   letter-spacing: 0px;
+  color: #272727;
+}
+
+/* ---------------------------------------------------
+    Breadcrumb
+    ----------------------------------------------------- */
+
+  .breadcrumb {
+      display: -ms-flexbox;
+      font-family: ProductR;
+      font-size: 22px;
+      color: #272727;
+      padding: 1rem 0;
+      list-style: none;
+      background-color: #fcfcfc;
+      border-radius: .25rem;
+  }
+  
+  .breadcrumb-item.active {
+      color: #FD585C;
+  }
+  
+  .breadcrumb-item+.breadcrumb-item::before {
+      display: inline-block;
+      padding-right: .5rem;
+      color: #272727;
+      content: ">>";
+  }
+
+
+  .update {
+    width: 150px;
+    height: 40px;
+    margin: 20px 15px;
+    background: #FD585C 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 3px #00000033;
+    border-radius: 4px;
+    font-size: 16px;
+    font-size: ProductB;
+    letter-spacing: 1.43px;
+    color: #FFFFFF;  
+  }
+
+  .cancel {
+    width: 150px;
+    height: 40px;
+    margin: 20px 15px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #FD585C;
+    border-radius: 4px;
+    font-size: 16px;
+    font-size: ProductB;
+    letter-spacing: 1.43px;
+    color: #27272782;
+  }
+
+
+/* scrolling */
+
+.upcoming2 {
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;   
+}
+
+/* width */
+.upcoming2::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.upcoming2::-webkit-scrollbar-track {
+  background: #F5F5F5 0% 0% no-repeat padding-box;
+  border-radius: 11px;
+  opacity: 1;
+}
+ 
+/* Handle */
+.upcoming2::-webkit-scrollbar-thumb {
+  background: #FD585CCC 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+/* Handle on hover */
+.upcoming2::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 0, 0); 
+}
+
+.inputcheck {
+  width: 20px;
+  height: 20px;
+}
+
+.memberfieldname {
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+
+.membership {
+  width: 460px;
+  height: 300px;
+  padding: 30px;
+  margin: 50px 0;
+  background: rgb(136, 103, 255);
+  border-radius: 12px;
+}
+
+.membership .p1 {
+  font-size: 22px;
+  font-family: ProductR;
+  letter-spacing: 4px;
+  color: #FFFFFF;
+}
+
+.membership .p2 {
+  margin: 20px 0 -10px 0;
+  font-size: 40px;
+  font-family: ProductB;
+  color: #FFFFFF;
+}
+
+.membership .p3 {
+  margin: 0;
+  font-size: 26px;
+  font-family: ProductR;
+  color: #FFFFFF;
+}
+
+.membership button {
+  margin: 30px 0px;
+  color: #FFFFFF;
+}
+
+.card {
+  position: relative;
+  padding: 0;
+  margin: 0px;
+  margin-bottom: 20px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  border: 2px solid #80808029;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 6px 12px #00000029;
+  border-radius: 12px;
+}
+
+.card-header {
+  height: 80px;
+  padding: 1.75rem 1.25rem;
+  color: inherit;
+  background: #FD585CCC 0% 0% no-repeat padding-box;
+  border-radius: 4px 4px 0px 0px;
+  opacity: 1;
+}
+
+.card-header p {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.card-body .shade {
+  margin: 0;
+  font-size: 16px;
+  font-family: ProductR;
+  color: #27272766;
+}
+
+.card-body .unshade {
+  font-size: 16px;
+  font-family: ProductR;
   color: #272727;
 }

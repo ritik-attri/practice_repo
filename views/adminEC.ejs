@@ -20,7 +20,7 @@
         <div class="sidebar">
             <div style="height: 100px;"></div>
             <div class="sidebarDiv">
-                <img src="/public/img/language.svg" class="sidebarImg">
+                <a href="/home/"><img src="/public/img/language.svg" class="sidebarImg"></a>
             </div>
             <div class="sidebarDiv">
                 <img src="/public/img/language.svg" class="sidebarImg">
@@ -93,10 +93,10 @@
                             <%projects.forEach(function(document){%>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <img src="/public/img/download.jpeg" class="card-img-top" alt="...">
+                                    <a href="/previewofproject/<%=document._id%>"><img src="/public/img/download.jpeg" class="card-img-top" alt="..."></a>
                                     <div class="card-body">
-                                        <p>document.project_title</p>
-                                        <h5 class="card-title">document.key_contribution</h5>
+                                        <p><%=document.project_title%></p>
+                                        <h5 class="card-title"><%=document.key_contribution%></h5>
                                         <img src="/public/img/person_circle.svg" class="img1">
                                         <img src="/public/img/person_circle.svg" class="img2">
                                         <div class="dropdown" style="float:right;margin-top: 10px;">

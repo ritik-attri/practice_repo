@@ -233,6 +233,7 @@ footer p {
     border-radius: 9px;
     opacity: 1;
 }
+
 .accordianbutton{
     width: 65px;
     height: 65px;
@@ -1333,7 +1334,7 @@ footer p {
 }
 
 input::-webkit-input-placeholder {
-  font-size: 22px;
+  font-size: 18px;
   font-family: ProductR;
   letter-spacing: 0px;
   color: #272727;
@@ -1341,7 +1342,7 @@ input::-webkit-input-placeholder {
 }
 
 textarea::-webkit-input-placeholder {
-  font-size: 22px;
+  font-size: 18px;
   font-family: ProductR;
   letter-spacing: 0px;
   color: #272727;
@@ -1378,7 +1379,8 @@ textarea::-webkit-input-placeholder {
   top: 15px;
   right: 10px;
   background: transparent linear-gradient(181deg, #FD585C7F 0%, #FD585C 100%) 0% 0% no-repeat padding-box;
-  border-radius: 7px;  
+  border-radius: 7px;
+  cursor: pointer;
 }
 
 .arrow-adjust img {
@@ -1397,10 +1399,12 @@ textarea::-webkit-input-placeholder {
 }
 
 .add-on img {
-  width: 93px;
-  height: 93px;
+  position: relative;
+  top: 15px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  padding: 10px;
+  padding: 15px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 6px #00000029;
 }
@@ -1411,4 +1415,41 @@ textarea::-webkit-input-placeholder {
   font-family: ProductR;
   letter-spacing: 0px;
   color: #FD585C;
+}
+
+.feeds {
+  width: 100%;
+  height: 460px;
+  padding: 30px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 30px 80px #00000011;
+  border-radius: 8px;
+}
+
+.feeds h4 {
+  padding: 0;
+  font-size: 18px;
+  color: #272727;
+}
+
+.feeds p {
+  margin: 0;
+  text-align: justify;
+  font-size: 17px;
+  font-family: ProductR;
+}
+
+.img1 {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.img2 {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  right: 25px;
+  z-index: 2;
 }
