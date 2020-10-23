@@ -1081,7 +1081,40 @@ app.get('/editproject/:id',function(req,res){
     })
   }
 })
-
+/*#################################
+  #######Project Preview 2###########
+  ################################# */
+app.get('/viewproject/:id',async function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    project.find({_id:req.params.id},async function(err,resp){
+      if(err){
+        console.log('In project preview got this error:- '+err);
+      }else{
+        var data = await user.find({_id:resp[0].created_by})
+        console.log("data is", data)
+        let first_letter=sess.user_data.user.username.split('');
+        let attachedfiles=[];
+        resp[0].attached_files.forEach(function(attached_file){
+          if(attached_file.userid==sess.user_data.user._id){
+            attachedfiles.push(attached_file.file);
+          }
+        })
+        if(sess.user_data.user.Role_object_id==''){
+          console.log('Project data:- '+resp[0]);
+          res.render('adminECview',{firstletter:first_letter[0],projectidforurl:req.params.id,hide_manage_students:true,role:'none',title:resp[0].project_title,subject:resp[0].subject,grade:resp[0].grade,summary:resp[0].project_summary,learningoutcome:resp[0].learning_outcome,keycontri:resp[0].key_contribution,detailsactivity:resp[0].details_activity,files:attachedfiles,startdate:resp[0].start_date,enddate:resp[0].end_date,data:data});
+        }else if(sess.user_data.user.Role.is10DemProuser==true||sess.user_data.user.Role.isEducator==true){
+          console.log('Project data:- '+resp[0]);
+          res.render('adminECview',{firstletter:first_letter[0],projectidforurl:req.params.id,hide_manage_students:false,role:'educator',title:resp[0].project_title,subject:resp[0].subject,grade:resp[0].grade,summary:resp[0].project_summary,learningoutcome:resp[0].learning_outcome,keycontri:resp[0].key_contribution,detailsactivity:resp[0].details_activity,files:attachedfiles,startdate:resp[0].start_date,enddate:resp[0].end_date,data:data});
+        }else{
+          console.log('Project data:- '+resp[0]);
+          res.render('adminECview',{firstletter:first_letter[0],projectidforurl:req.params.id,hide_manage_students:false,role:'org',title:resp[0].project_title,subject:resp[0].subject,grade:resp[0].grade,summary:resp[0].project_summary,learningoutcome:resp[0].learning_outcome,keycontri:resp[0].key_contribution,detailsactivity:resp[0].details_activity,files:attachedfiles,startdate:resp[0].start_date,enddate:resp[0].end_date,data:data});
+        }
+      }
+    })
+  }
+})
 /*#################################
   #######Project Preview###########
   ################################# */
