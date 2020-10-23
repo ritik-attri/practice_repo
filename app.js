@@ -9,6 +9,9 @@ const util = require('util');
 const nodemailer = require('nodemailer');
 const request= require('request');
 var google = require('googleapis');
+var fs = require('fs');
+var path = require('path');
+var multer = require('multer');
 app.set('views','./views');
 app.use('/public',express.static('./public')); //Serves resources from public folder
 app.set('view engine','ejs');
@@ -36,6 +39,15 @@ var mail=nodemailer.createTransport({
     pass:'10Dem123@'
   }
 });
+var storage = multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null,'uploads');
+  },
+  filename:(req,file,cb)=>{
+    cb(null,file.fieldname+'-'+Date.now())
+  }
+})
+var upload = multer({storage:storage});
 /*################################## 
   ##Setting up connection to Mongo## 
   ##################################*/
@@ -549,6 +561,31 @@ app.post('/updateorgprofile/:id',function(req,res){
         })
       })
     }
+  }
+})
+/*#################################
+  #####ORG PROFILE SETTINGS 2######
+  ################################# */
+app.get('/orgprofile/profile2',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    res.render('adminProfile2',{id:sess.user_data.role_Data._id,name:sess.user_data.user.username,email:sess.user_data.user.email,img:sess.user_data.role_Data.img,orgname:sess.user_data.role_Data.org_name,phonenumber:sess.user_data.role_Data.phone_Number});
+  }
+})
+  /*################################
+    #HANDLING ORG PROFILE SETTINGS2#
+    ################################ */
+app.post('/updateorgprofile2/:id',upload.single('image'),(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    console.log('Req.body:- '+util.inspect(req.body));
+    console.log('\n req.file:- '+req.file);
+    PorNPORG.findOneAndUpdate({_id:sess.user_data.role_Data._id},{$set:req.body},{new:true},(err,resp)=>{
+      sess.user_data.role_Data=resp;
+      res.redirect('/orgprofile/profile2');
+    })
   }
 })
 /*#################################

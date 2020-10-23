@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/adminheader.css">
+        <link rel="stylesheet" href="/public/css/studentProfile.css">
+        
+        <title>10dem Education|Dashboard</title>
+        <style>
+            h4 {
+                font-size: 18px;
+            }
+            h3 {
+                position: relative;
+                top: 5px;
+                padding: 30px 0;
+                text-align: center;
+                font-size: 22px;
+            }
+
+            .toggles {
+                margin: 30px 0;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <div class="sidebar">
+            <div style="height: 100px;"></div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+        </div>
+
+        <div style="background: #FCFCFC;position: absolute;left: 70px;right: 0px;">
+
+            <header>
+                
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
+                        <img src="/public/img/logo.jpeg" style="width: 50px;height: 50px;">
+                        <p style="padding: 0 8px;color: #313131;font-size: 1rem;font-family: sans-serif;line-height: 1.5;"><%=orgname%><br/>Betterlife</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-left">
+                        <img src="/public/img/person_circle.svg" style="width: 40px;height: 40px;border-radius: 50%;">
+                        <p style="padding: 8px;font-size: 18px;color: #313131;font-family: ProductR;line-height: 1.5;"><%=name%></p>
+                    </div>
+                </div>
+                
+            </header>
+            <form action="/updateorgprofile2/<%=id%>" method="POST">
+            <div class="container" style="max-width: 95%;padding: 25px 0;">
+
+                
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                    </ol>
+                </nav>
+                
+
+                <div class="row" style="margin: 40px 0;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 0px 3px #00000029;border-radius: 6px 0px 0px 6px;">
+
+                    <div class="col-lg-3" style="padding: 30px;border-right: 2px solid #eeeeee;">
+
+                        <div style="text-align: center;">
+                            <img class="profilePic" src="/public/img/person_circle.svg">
+                            <h4 style="color: #272727"><%=name%></h4>
+                            <p>Administrator</p>
+                        </div>
+
+                        <hr style="margin: 50px 0;background: #0000001F;">
+
+                        <div class="d-flex justify-content-left" style="margin-bottom: 30px;">
+                            <p style="margin-right: 75px;position: relative;bottom: 6px;">Email</p>
+                            <h4 style="color: #FD585C;"><%=email%></h4>
+                        </div>
+
+                        <div class="d-flex justify-content-left" style="margin-bottom: 30px;">
+                            <p style="margin-right: 65px;position: relative;bottom: 6px;">Phone</p>
+                            <h4><%=phonenumber%></h4>
+                        </div>
+
+                    </div>
+    
+                    <div class="col-lg-9" style="padding-bottom: 5rem;">
+                        
+                        <div class="row" style="padding: 40px 40px 0 40px;border-bottom: 1px solid #e2e2e2;">
+                            <div class="col-lg-2">
+                                <a href="/orgprofile/profile"><p style="color: #2727274D;text-align: center;cursor: pointer;">Profile Settings</p></a>
+                            </div>
+                            <div class="col-lg-2" style="display: inline-block;border-bottom: 2px solid #FD585C;">
+                                <a href="/orgprofile/profile2"><p style="color: #FD585C;text-align: center;cursor: pointer;">Org Details</p></a>
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="color: #2727274D;text-align: center;cursor: pointer;">Change Password</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="color: #2727274D;text-align: center;cursor: pointer;">Set Permission</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="color: #2727274D;text-align: center;cursor: pointer;">10Dem Plan</p>
+                            </div>   
+                        </div>
+                        <div class="row" style="padding: 40px;">
+                            <div class="col-lg-12" style="margin-bottom: 30px;border-bottom: 1px solid #e2e2e2;">
+                                <div class="d-flex justify-content-between">
+                                    <p style="color: #2727274D;margin: 0;position: relative;top: 5px;">Logo</p>
+                                    <div class="editIcon">
+                                        <img src="/public/img/editblack.svg">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-left">
+                                    <img src="/public/img/logo.jpeg" style="width: 100px;height: 100px;">
+                                    <p style="padding: 30px 0 0 60px;font-size: 20px;">PNG or JPG no bigger than 100px wide and tall</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12" style="text-align: center;">
+                                <button class="btn update">Update</button>
+                                <button class="btn cancel">Cancel</button>
+                            </div>
+                            
+                            <div class="col-lg-12" style="margin-bottom: 30px;border-bottom: 1px solid #e2e2e2;">
+                                <div class="d-flex justify-content-between">
+                                    <p style="color: #2727274D;margin: 0;position: relative;top: 5px;">Organization Info</p>
+                                    <div class="editIcon">
+                                        <img src="/public/img/editblack.svg">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h4>Organization Name</h4>
+                                <input class="input100" type="text" name="org_name" value="<%=orgname%>" >
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>Mobile Number</h4>
+                                <input class="input100" type="text" name="phone_Number" value="<%=phonenumber%>" >
+                            </div>
+                            <div class="col-lg-12" style="text-align: center;">
+                                <button class="btn update" type="submit">Update</button>
+                                <button class="btn cancel">Cancel</button>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+
+                </div>   
+                
+            </div>
+            </form>
+            <footer><p>10dem © 2020</p></footer>
+
+        </div>
+        <!-- end of container -->
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
