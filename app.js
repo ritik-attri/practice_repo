@@ -36,7 +36,7 @@ var mail=nodemailer.createTransport({
   service:'gmail',
   auth:{
     user:'10demdeveloper@gmail.com',
-    pass:'10Dem123@'
+    pass:'developer123@'
   }
 });
 var storage = multer.diskStorage({
@@ -565,6 +565,60 @@ app.post('/updateorgprofile/:id',function(req,res){
     }
   }
 })
+
+/*################################# 
+  ##FORGOT PASSWORD##
+  ################################# */
+var generateOTP = ()=>{
+  var digits = '0123456789';
+  let OTP = ''; 
+  for (let i = 0; i < 4; i++ ) { 
+      OTP += digits[Math.floor(Math.random() * 10)]; 
+  } 
+  return OTP; 
+
+}
+app.get("/forgot-password",(req,res)=>{
+  res.render("SignIn-otp")
+})
+
+app.post("/send-OTP",(req,res)=>{
+ console.log(req.body.email)
+ user.find({email:req.body.email}).then(data=>{
+   if(data.length==1){
+     var OTP = generateOTP()
+     console.log(OTP)
+    var mailOptions = {
+      from: '10demdeveloper@gmail.com',
+      to: req.body.email,
+      subject: '10dem forgot-password OTP',
+      text: `Your OTP is ${OTP}`
+    };
+    mail.sendMail(mailOptions,(err,success)=>{
+      if(err){
+        console.log(err)
+      }
+      else{
+        console.log(success)
+        req.session.temp = req.body.email
+        res.render("signin-reset",{otp:OTP})
+      }
+    })
+   }
+ })
+})
+
+app.post("/password-change",(req,res)=>{
+  console.log(req.body)
+  console.log(req.session.temp)
+  user.findOneAndUpdate({email:req.session.temp},{password:req.body.password}).then(result=>{
+    console.log("Password Successfully Updated")
+    res.redirect("/")
+  }).catch(err=>{
+    console.log(err)
+  })
+})
+
 /*#################################
   #####ORG PROFILE SETTINGS 2######
   ################################# */
