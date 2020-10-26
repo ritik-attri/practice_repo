@@ -251,6 +251,8 @@ app.post('/checkdata/:id',function(req,res){
     console.log('Only for social login');
   }
 })
+
+
 /*####################################### 
   ############Home##################
   #######################################*/
@@ -588,6 +590,49 @@ app.post('/updateorgprofile2/:id',upload.single('image'),(req,res)=>{
     })
   }
 })
+
+/*#################################
+  #####ORG PROFILE SETTINGS 3######
+  ################################# */
+app.get("/orgprofile/change-password",(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    res.render('adminProfile3',{id:sess.user_data.role_Data._id,name:sess.user_data.user.username,email:sess.user_data.user.email,img:sess.user_data.role_Data.img,orgname:sess.user_data.role_Data.org_name,phonenumber:sess.user_data.role_Data.phone_Number});
+  }
+})
+
+app.post("/change-password/:id",async (req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    console.log(req.body)
+    console.log(sess.user_data.password)
+    if(req.body.Current === sess.user_data.user.password &&  req.body.newPassword == req.body.Confirm){
+      user.findOneAndUpdate({_id:sess.user_data.user._id},{password:req.body.Confirm}).then(result=>{
+        console.log(result)
+        console.log("Updated")
+        res.redirect("/home/")
+      })
+    }
+    else if(req.body.newPassword !== req.body.Confirm){
+      console.log("password don't match")
+      res.redirect("/orgprofile/change-password")
+    }
+    else if(req.body.Current !== sess.user_data.user.password){
+      console.log("Current password is wrong")
+      res.redirect("/orgprofile/change-password")
+    }
+    else if(req.body.Current==req.body.Confirm){
+      console.log("Cant use old password")
+      res.redirect("/orgprofile/change-password")
+
+    }
+    
+}
+
+})
+
 /*#################################
   ##########Class details##########
   ################################# */

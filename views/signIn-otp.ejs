@@ -10,36 +10,12 @@
         
         <link rel="stylesheet" href="/../public/css/util.css">
         <link rel="stylesheet" href="/../public/css/signup.css">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <!--<script>
-            //Google sign in
-            function onSignIn(googleUser) {
-                var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); 
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail());
-                var data={
-                    name:profile.getName(),
-                    email:profile.getEmail(),
-                    pass:profile.getId()
-                }
-                console.log(data);
-                var xhr= new XMLHttpRequest();
-                my_url='/checkdata/'+1;
-                xhr.open('POST',my_url);
-                xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-                
-                xhr.send(JSON.stringify(data));
-                
-            }
-        </script>-->
 
 
         <title>10dem Education|Sign In</title>
         <style>
             .sign_up_bg {
-                background-image: url("/../public/img/resized_img.jpg");
+                background-image: url("public/img/resized_img.jpg");
                 min-height: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -47,7 +23,6 @@
                 position: relative;
             }
         </style>
-        <meta name="google-signin-client_id" content="850762646572-s418sekf7imkalnn764bg56odhluavuf.apps.googleusercontent.com">
     </head>
 
     <body>
@@ -56,67 +31,83 @@
         <div class="sign_up_bg">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-5" style="margin-top: 50px;">
+                        <div style="background: #F4F5F9CC 0% 0% no-repeat padding-box;border-left: 5px solid #FD585C;">
+                            <p style="padding: 20px;font-size: 18px;color: #27272799;">Please enter registered email ID or phone number to reset password</p>
+                        </div>
+                        <!-- ON SENDING OTP -->
+                        <!-- <div style="background: #21AF5099 0% 0% no-repeat padding-box;">
+                            <p style="padding: 5px 20px;font-size: 14px;color: #ffffff"><img src="img/done.svg" style="width: 16px;height: 16px;padding: 2px;border-radius: 50%;border: 1px solid #ffffff;position: relative;bottom: 2px;">&nbsp;&nbsp;&nbsp;OTP has sent to your registered email Id</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-4 col-md-12">
-                    <form class="validate-form" action="/checkdata/0" method="post">
+                    <form action="/send-OTP" method="POST" class="validate-form">
                         <span class="login100-form-title m-t-30">
                             Sign In
                         </span>
 
-                        <div class="text-center p-b-20">
+                        <!-- <div class="text-center p-b-20">
                             <span class="txt2">
                                 Continue with
                             </span>
-                        </div>
+                        </div> -->
 
-                        <div class="login100-form-social flex-c-m">
+                        <!-- <div class="login100-form-social flex-c-m">
                             <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-10">
-                                <img src="/../public/img/google.png" style="width: 25px;height: 25px;" alt="">
+                                <img src="img/google.png" style="width: 25px;height: 25px;" alt="">
+                            </a>
+                            
+                            <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-10">
+                                <img src="img/facebook.png" style="width: 25px;height: 25px;" alt="">
                             </a>
 
                             <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-10">
-                                <img src="/../public/img/facebook.png" style="width: 25px;height: 25px;" alt="">
+                                <img src="img/linkedin.png" style="width: 25px;height: 25px;" alt="">
                             </a>
-
-                            <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86mhc0x8z0bc4e&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fsavinglinkedinprofile&state=fooobar&scope=r_liteprofile%20r_emailaddress%20r_liteprofile" class="login100-form-social-item flex-c-m bg1 m-r-10">
-                                <img src="/../public/img/linkedin.png" style="width: 25px;height: 25px;" alt="">
-                            </a>
-                        </div>
+                        </div> -->
 
 
-                        <div class="text-center p-t-20 p-b-20 m-t-20 m-b-20">
+                        <!-- <div class="text-center p-t-20 p-b-20 m-t-20 m-b-20">
                             <p><span style="position: relative;top: -8px;">_________________&nbsp;&nbsp;</span>Or<span style="position: relative;top: -8px;">&nbsp;&nbsp;_________________</span></p>
-                        </div>
+                        </div> -->
                         
-                        <div class="form-field">
-                        <div class="wrap-input100 validate-input" data-validate = "Please enter a valid email address">
-                            <input class="input100" type="text" name="email">
+                        
+                        <!-- <div class="wrap-input100 validate-input" data-validate = "Please enter a valid email address">
+                            <input class="input100" type="text" name="text">
                             <span class="focus-input100"></span>
-                            <span class="label-input100">Email Address</span>
-                        </div>
-                        </div>
+                            <span class="label-input100">Email ID/Phone</span>
+                        </div> -->
                         
-                        <div class="form-field">
+                        
                         <div class="wrap-input100 validate-input" data-validate="Please enter a valid password">
-                            <input class="input100" type="password" name="pass">
-                            <span class="focus-input100"></span>
-                            <span class="label-input100">Password</span>
-                        </div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <input class="input100" type="email" name="email">
+                                    <span class="focus-input100"></span>
+                                    <span class="label-input100">Email ID</span>
+                                </div>
+                                <!-- <div style="height: 28px;width: 28px;border-radius: 50%;background: #79CF96 0% 0% no-repeat padding-box;position: relative;bottom: 25px;left: 180px;">
+                                    <img src="public/img/done.svg" style="height: 24px;width: 24px;padding: 2px 0 0 2px;">
+                                </div> -->
+                            </div>
+                           
                         </div>
 
-                        <div class="form-actions">
+    
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" type="submit" >
-                                Sign In
+                            <button class="login100-form-btn">
+                                Continue
                             </button>
                         </div>
+
+                        <div class="text-center p-t-20 p-b-20">
+                            <a href="" class="txt1">Resend OTP</a>
                         </div>
 
                         <div class="text-center p-t-20 p-b-20">
-                            <a href="/forgot-password" class="txt1">Forgot Password?</a>
-                        </div>
-
-                        <div class="text-center p-t-20 p-b-20">
-                            <p>Don't have an account? <span><a href="/signup/false" class="txt1">Sign Up</a></span></p>
+                            <p>Don't have an account? <span><a href="" class="txt1">Sign Up</a></span></p>
                             
                         </div>
                         
@@ -142,7 +133,7 @@
         
         <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
 
-        <script src="/../public/js/signup.js"></script>
+        <script src="js/signup.js"></script>
 
     </body>
 </html>

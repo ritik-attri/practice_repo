@@ -16,6 +16,18 @@
             h4 {
                 font-size: 18px;
             }
+            h3 {
+                position: relative;
+                top: 5px;
+                padding: 30px 0;
+                text-align: center;
+                font-size: 22px;
+            }
+
+            .toggles {
+                margin: 30px 0;
+                text-align: center;
+            }
         </style>
     </head>
 
@@ -44,7 +56,7 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex justify-content-between">
                         <img src="/public/img/logo.jpeg" style="width: 50px;height: 50px;">
-                        <p style="padding: 0 8px;color: #313131;font-size: 1rem;font-family: sans-serif;line-height: 1.5;"><%=orgname%><br/>Betterlife</p>
+                        <p style="padding: 0 8px;color: #313131;font-size: 1rem;font-family: sans-serif;line-height: 1.5;">LIFECOACHING<br/>Betterlife</p>
                     </div>
                     
                     <div class="d-flex justify-content-left">
@@ -60,14 +72,12 @@
                 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/home/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Settings</li>
                     </ol>
                 </nav>
                 
 
-    
-            <form action="/updateorgprofile/<%=id%>" method="POST">
                 <div class="row" style="margin: 40px 0;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 0px 3px #00000029;border-radius: 6px 0px 0px 6px;">
 
                     <div class="col-lg-3" style="padding: 30px;border-right: 2px solid #eeeeee;">
@@ -91,66 +101,84 @@
                         </div>
 
                     </div>
+    
                     <div class="col-lg-9" style="padding-bottom: 5rem;">
                         
                         <div class="row" style="padding: 40px 40px 0 40px;border-bottom: 1px solid #e2e2e2;">
-                            <div class="col-lg-2" style="display: inline-block;border-bottom: 2px solid #FD585C;">
-                                <a href="/orgprofile/profile"><p style="color: #FD585C;text-align: center;cursor: pointer;">Profile Settings</p></a>
+                            <div class="col-lg-2">
+                                <a href="/orgprofile/profile"><p style="color: #2727274D;text-align: center;cursor: pointer;">Profile Settings</p></a>
                             </div>
                             <div class="col-lg-2">
                                 <a href="/orgprofile/profile2"><p style="color: #2727274D;text-align: center;cursor: pointer;">Org Details</p></a>
                             </div>
-                            <div class="col-lg-2">
-                                <a href="/orgprofile/change-password"><p style="color: #2727274D;text-align: center;cursor: pointer;">Change Password</p></a>
+                            <div class="col-lg-2" style="display: inline-block;border-bottom: 2px solid #FD585C;">
+                                <a href="/orgprofile/change-password"><p style="color: #FD585C;text-align: center;cursor: pointer;">Change Password</p></a>
                             </div>
                             <div class="col-lg-2">
                                 <p style="color: #2727274D;text-align: center;cursor: pointer;">Set Permission</p>
                             </div>
                             <div class="col-lg-2">
                                 <p style="color: #2727274D;text-align: center;cursor: pointer;">10Dem Plan</p>
-                            </div>
+                            </div>   
                         </div>
 
                         <div class="row" style="padding: 40px;">
-                            
-                            <div class="col-lg-12" style="margin-bottom: 30px;border-bottom: 1px solid #e2e2e2;">
-                                <div class="d-flex justify-content-between">
-                                    <p style="color: #2727274D;margin: 0;position: relative;top: 5px;">Personal Information</p>
-                                    <div class="editIcon">
-                                        <img src="/public/img/editblack.svg">
-                                    </div>
+                            <div class="col-lg-12">
+                                
+                                <div style="width: 100%;height: 60px;margin: 0 0 50px 0;padding: 18px;background: #F4F5F9 0% 0% no-repeat padding-box;border-left: 5px solid #325981;">
+                                    <p style="text-align: center;font-family: ProductR;color: #272727;margin: 0 20px;">Student will receive an email of confirmation when you change the password</p>
+                                </div>
+                              
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="row">
+
+                                    <form action="/change-password/<%=id%>" method="POST">
+                                        <div class="col-lg-12">
+                                            <h4>Type your current password</h4> 
+                                            <input class="input100" type="password" id="txtNewPassword" name="Current">                                                  
+                                        </div>
+    
+                                        <div class="col-lg-12">
+                                            <h4>Type your new password</h4> 
+                                            <input class="input100" type="password" id="txtNewPassword" name="newPassword">                                                  
+                                        </div>
+                                        
+                                        <div class="col-lg-12">
+                                            <h4>Retype your new password</h4>
+                                            <input class="input100" type="password" id="txtConfirmPassword" name="Confirm">                                                    
+                                        </div>
+    
+                                        <div class="col-lg-12">
+                                            <button type="submit" class="btn modalbutton1" style="left: 0;display: block;margin: 20px auto;">Update</button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <h4>First Name</h4>
-                                <input class="input100" type="text" name="Firstname" value="<%=name.split(' ')[0]%>" >
+                            <div class="col-lg-2">
 
-                                <h4>Username</h4>
-                                <input class="input100" type="text" name="name" value="<%=name%>" >
-
-                                <h4>Phone Number</h4>
-                                <input class="input100" type="text" name="phone_Number" value="<%=phonenumber%>" >
                             </div>
-                            <div class="col-lg-6">
-                                <h4>Last Name</h4>
-                                <input class="input100" type="text" name="Lastname" value="<%=name.split(' ')[1]%>" >
-
-                                <h4>Email Id</h4>
-                                <input class="input100" type="text" name="email" value="<%=email%>" >
+                            <div class="col-lg-5">
+                                <div style="padding: 20px 30px;background: #E2EAFA66 0% 0% no-repeat padding-box;border-radius: 4px;">
+                                    <p style="font-family: ProductR;color: #272727;">Password requirements</p>
+                                    <p style="font-family: ProductR;font-size: 16px;">To create a new password, you have to meet all of the following requirements:</p>
+                                    <ul style="font-size: 16px;color: #2727274D;margin: 0;">
+                                        <li>Minimum 8 character</li>
+                                        <li>One lowercase Character</li>
+                                        <li>One Uppercase Character</li>
+                                        <li>One Special Character</li>
+                                        <li>One numeric</li>
+                                        <li>Can’t be the same as a previous password</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-lg-12" style="text-align: center;">
-                                <button class="btn update" type="submit">Update</button>
-                                <button class="btn cancel">Cancel</button>
-                            </div>
-
                         </div>
                        
                     </div>
-                    
 
-                </div> 
-                
-            </form>  
+                </div>   
                 
             </div>
 
