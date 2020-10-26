@@ -486,6 +486,45 @@ app.get('/orgdashboard',function(req,res){
     }
   }
 })
+
+/*################################
+  #####Educators + DETAILS #######
+  ################################ */
+app.get("/all-classes",(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    console.log('getting in here:-'+sess.user_data.role_Data.classes.length);
+    if(sess.user_data.role_Data.classes.length==0){
+      res.render('allClasses',{name:sess.user_data.user.username,
+                            orgname:sess.user_data.role_Data.org_name,
+                            classes:[],
+                            grade:[]});
+    }
+    else{
+      let count=0;
+      let classesare=[];
+      sess.user_data.role_Data.classes.forEach(function(document){
+        classes.find({_id:document},function(err,resp){
+          if(err){
+            console.log('error in else loop /classDetails cannot find classes:- '+err);
+          }else{
+            classesare.push(resp[0]);
+            count++;
+            if(count==sess.user_data.role_Data.classes.length){
+              console.log(classesare);
+              res.render('allClasses',{name:sess.user_data.user.username,
+                                    orgname:sess.user_data.role_Data.org_name,
+                                    classes:classesare,
+                                    grade:[]});
+            }
+          }
+        })
+      })
+    }
+  }
+})
+
 /*################################
   #####Educators + DETAILS #######
   ################################ */
@@ -501,7 +540,7 @@ app.get('/orgdashboard/educators',function(req,res){
       let educators_are=[];
       let count=0;
       sess.user_data.role_Data.Educators.forEach(function(Educator){
-        user.find({Role_object_id:Educator},function(err,user){
+        user.find({_id:Educator},function(err,user){
           if(err){
             console.log('Cannot find user in line 527 because:- '+err);
             res.redirect('/orgdashboard');
@@ -512,6 +551,38 @@ app.get('/orgdashboard/educators',function(req,res){
             if(count==sess.user_data.role_Data.Educators.length){
               console.log('##################################\n ####All the educators going#### \n  ##################################'+educators_are);
               res.render('manageEducator',{name:sess.user_data.user.username,
+                                          orgname:sess.user_data.role_Data.org_name,
+                                          alleducators:educators_are});
+            }            
+          }
+        })
+      })
+    }
+  }
+})
+app.get('/all-Educators',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    if(sess.user_data.role_Data.Educators.length==0){
+      res.render('allEducators',{name:sess.user_data.user.username,
+                                  orgname:sess.user_data.role_Data.org_name,
+                                  alleducators:[]})
+    }else{
+      let educators_are=[];
+      let count=0;
+      sess.user_data.role_Data.Educators.forEach(function(Educator){
+        user.find({_id:Educator},function(err,user){
+          if(err){
+            console.log('Cannot find user in line 527 because:- '+err);
+            res.redirect('/orgdashboard');
+          }else{
+            educators_are.push(user[0]);
+            count++;
+            console.log('Count:- '+count+' Educators:- '+sess.user_data.role_Data.Educators.length);
+            if(count==sess.user_data.role_Data.Educators.length){
+              console.log('##################################\n ####All the educators going#### \n  ##################################'+educators_are);
+              res.render('allEducators',{name:sess.user_data.user.username,
                                           orgname:sess.user_data.role_Data.org_name,
                                           alleducators:educators_are});
             }            
