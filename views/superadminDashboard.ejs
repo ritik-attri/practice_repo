@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" href="/public/css/adminDashboard.css">
+
+        <title>10dem Education|Dashboard</title>
+
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+        <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+        <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+        <style type="text/css">
+
+            html,
+            body,
+            #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            }
+
+            .stats {
+                width: 200px;
+                background: #ffffff 0% 0% no-repeat padding-box;
+                box-shadow: none;
+                border-radius: none;
+            }
+
+            .arrow-adjust {
+                position: absolute;
+                right: 5px;
+            }
+
+            .wholediv {
+                background: #ffffff 0% 0% no-repeat padding-box;box-shadow: 0px 20px 80px #00000011;border-radius: 10px;
+            }
+
+            .mem {
+                width: 100%;
+                padding: 20px 40px;
+            }
+
+            .mem h3 {
+                font-size: 30px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .mem p {
+                margin-bottom: 2px;
+                font-size: 16px;
+                color: #68686899;
+            }
+
+            #map {
+                height: 400px;
+                /* The height is 400 pixels */
+                width: 100%;
+                /* The width is the width of the web page */
+            }
+
+            /* Flatpickr */
+            .flatpickr-day.today{
+            background-color: #FD585C;
+            border: 0;
+            color: #ffffff
+            }
+
+            .flatpickr-day.selected{
+            background-color: #ffffff;
+            border: 2px solid #FD585C;
+            color: #272727;
+            }
+
+            .flatpickr-day:hover{
+            background-color: #fd585c;
+            color: #ffffff;
+            }
+
+            .flatpickr-day.selected:hover{
+            background-color: #fd585c;
+            color: #ffffff;
+            border: 2px solid #FD585C;
+            }
+
+        
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" defer></script>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+            // The location of Uluru
+            const uluru = { lat: -25.344, lng: 131.036 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+            }
+      </script>
+        
+    </head>
+
+    <body>
+        
+        <div class="sidebar">
+            <div style="height: 100px;"></div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+            <div class="sidebarDiv">
+                <img src="/public/img/language.svg" class="sidebarImg">
+            </div>
+        </div>
+
+        <div style="background: #FCFCFC;position: absolute;left: 70px;right: 0px;">
+
+            <header>
+                
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
+                        <img src="/public/img/logo.jpeg" style="width: 50px;height: 50px;">
+                        <p style="padding: 0 8px;">SUPER ADMIN<br/>10Dem</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-left">
+                        <img src="/public/img/person_circle.svg" style="width: 40px;height: 40px;border-radius: 50%;">
+                        <p style="padding: 8px;font-size: 18px;">Super Admin</p>
+                    </div>
+                </div>
+                
+            </header>
+
+            <div class="container" style="max-width: 95%;padding: 25px 0;">
+
+                <div class="d-flex justify-content-left" style="margin-left: 10px;">
+                    
+                    <img src="/public/img/external.svg" style="width: 60px;height: 60px;padding: 18px;border-radius: 50%;background: #FD585C7F;">
+                    <h3 style="margin: 12px 0;">10Dem Users (<%=tnm%>)</h3>
+                    
+                </div>
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnpm%></h1>
+                                <p>Pro Members</p>
+                            </div>
+                            <div style="background: #ffffff;">
+                                <div id="container1" style="position: relative;top: 10px;right: 30px;"></div>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnom%></h1>
+                                <p>Org Members</p>
+                            </div>
+                            <div style="background: #ffffff;">
+                                <div id="container2" style="position: relative;top: 10px;right: 30px;"></div>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnnm%></h1>
+                                <p>No-Profit Members</p>
+                            </div>
+                            <div style="background: #ffffff;">
+                                <div id="container3" style="position: relative;top: 10px;right: 30px;"></div>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnm-(tnpm+tnom+tnnm)%></h1>
+                                <p>Free Members</p>
+                            </div>
+                            <div style="background: #ffffff;">
+                                <div id="container4" style="position: relative;top: 10px;right: 30px;"></div>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-left" style="margin-left: 10px;">
+                    
+                    <img src="/public/img/external.svg" style="width: 60px;height: 60px;padding: 18px;border-radius: 50%;background: #FD585C7F;">
+                    <h3 style="margin: 12px 0;">Project Section (<%=tnp%>)</h3>
+                    
+                </div>
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tn10p%></h1>
+                                <p>10dem Projects</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tndp%></h1>
+                                <p>Projects In Draft</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnop%></h1>
+                                <p>Ongoing Projects</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex wholediv">
+                            <div class="stats">
+                                <h1><%=tnep%></h1>
+                                <p>Externally Collaborated Projects</p>
+                            </div>
+                            <div class="arrow-adjust">
+                                <img src="/public/img/arrow-right.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-8">
+                        <div class="d-flex justify-content-between">
+                            <div style="width: 100%;">
+                                <div id="map"></div>
+                                <div class="d-flex justify-content-between" style="background: #ffffff;">
+                                    <p style="color: #727373;padding: 12px;">Select the location</p>     
+                                    <div class="d-flex">
+                                        <p style="color: #727373;padding: 12px;border-top: 2px solid #FD585C    ;">All</p>
+                                        <p style="color: #727373;padding: 12px;">Delhi</p>
+                                        <p style="color: #727373;padding: 12px;">Australia</p>
+                                        <p style="color: #727373;padding: 12px;">Mumbai</p>
+                                        <p style="color: #727373;padding: 12px;">UAE</p>
+                                        <p style="color: #727373;padding: 12px;">More</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div style="height: 465px;background: #ffffff;">
+                                <div class="mem">
+                                    <p>Pro Members</p>
+                                    <h3><%=tnpm%></h3>
+                                    <div style="width: 40px;height: 5px;background: #2896E9 0% 0% no-repeat padding-box;"></div>
+                                </div>
+                                <div class="mem">
+                                    <p>Org Members</p>
+                                    <h3><%=tnom%></h3>
+                                    <div style="width: 40px;height: 5px;background: #FFDB64 0% 0% no-repeat padding-box;"></div>
+                                </div>
+                                <div class="mem">
+                                    <p>Non-Profit Members</p>
+                                    <h3><%=tnnm%></h3>
+                                    <div style="width: 40px;height: 5px;background: #FF3D00 0% 0% no-repeat padding-box;"></div>
+                                </div>
+                                <div class="mem">
+                                    <p>Free Members</p>
+                                    <h3><%=tnm-(tnpm+tnom+tnnm)%></h3>
+                                    <div style="width: 40px;height: 5px;background: #1CCB56 0% 0% no-repeat padding-box;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feeds">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4>Recently Added</h4>
+                                    <p style="margin-bottom: 10px;font-size: 12px;color: #8D8D8D;">10Dem Members</p>
+                                    <div style="width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p>Oct 2020</p>
+                                <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
+                                <img src="/public/img/person_circle.svg" class="img1">
+                                <div style="padding-left: 20px;">
+                                    <p>Org</p>
+                                    <p style="margin-bottom: 0px;">Ryan International School Registered</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <img src="/public/img/person_circle.svg" class="img1">
+                                <div style="padding-left: 20px;">
+                                    <p>Org</p>
+                                    <p style="margin-bottom: 0px;">Ryan International School Registered</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <img src="/public/img/person_circle.svg" class="img1">
+                                <div style="padding-left: 20px;">
+                                    <p>Pro</p>
+                                    <p style="margin-bottom: 0px;">Samyadeep Maneerattana Registered</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <img src="/public/img/person_circle.svg" class="img1">
+                                <div style="padding-left: 20px;">
+                                    <p>Free</p>
+                                    <p style="margin-bottom: 0px;">Samyadeep Maneerattana Registered</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                           
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 2rem 0;">
+                    <div class="col-lg-8">
+                        <div style="background: #FFFFFF;padding: 20px;">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 style="padding: 10px 5px 0px 5px;">Weekly Statistics</h4>
+                                    <p style="margin-bottom: 10px;margin-left: 5px;font-size: 12px;color: #8D8D8D;">Registered Members Statistics</p>
+                                    <div style="margin-left: 5px;width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <div class="dropdown">
+                                    <box-icon size="md" name='calendar-edit' style="cursor: pointer;"></box-icon>
+                                    <div class="dropdown-content" id="Dropdown" style="min-width: 130px;position: absolute;top: 40px;display: none;">
+                                        <h4 class="h44">From</h4>
+                                        <input class="line flatpickr">
+                                        <h4 class="h44">To</h4>
+                                        <input class="line flatpickr">
+                                        <button class="btn" style="width: 75px;height: 31px;margin: 10px 20px 10px 20px;padding: 0px;background: #EBEBEB 0% 0% no-repeat padding-box;border-radius: 4px;">Done</button>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div id="container" style="height: 400px;"></div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-4">
+                        <div style="background: #FFFFFF;padding: 20px;height: 100%;">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 style="padding: 10px 5px;">Reports / Issues</h4>
+                                    <div style="margin-left: 5px;width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p style="padding-top: 10px;">Reports Resolved<br/><span style="color: #FD585C;">15</span></p>
+                                <p style="padding-top: 10px;">Reports Resolved<br/><span style="color: #FD585C;">15</span></p>
+                            </div>
+                            <canvas id="horizontalBar" height="230px"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-left" style="margin-left: 10px;">
+                    
+                    <img src="/public/img/external.svg" style="width: 60px;height: 60px;padding: 18px;border-radius: 50%;background: #FD585C7F;">
+                    <h3 style="margin: 12px 0;">Activity Feed</h3>
+                    
+                </div>
+
+                <div class="row" style="margin: 3rem 0;">
+                    <div class="col-lg-5">
+                        <div class="feeds">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4>Pro Members</h4>
+                                    <div style="width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p>September 2019</p>
+                                <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Peter from Ryan International School started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Peter Parker started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Peter Parker started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="feeds">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4>Organization</h4>
+                                    <div style="width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p>September 2019</p>
+                                <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Peter from Ryan International School , Australia started collaboration with Alexa from Oxford International School, Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                           
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 3rem 0;">
+                    <div class="col-lg-5">
+                        <div class="feeds">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4>Non- Profit Organization</h4>
+                                    <div style="width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p>September 2019</p>
+                                <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Peter from Ryan International School , Australia started collaboration with Alexa from Oxford International School, Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div>
+                                    <p>Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="feeds">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4>Free Members</h4>
+                                    <div style="width: 32px;height: 4px;background: transparent linear-gradient(90deg, #FD585C 0%, #FD585C80 100%) 0% 0% no-repeat padding-box;border-radius: 2px;"></div>
+                                </div>
+                                <p>September 2019</p>
+                                <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
+                                <div class="d-flex justify-content-between">
+                                    <img src="/public/img/person_circle.svg" class="img1">
+                                    <img src="/public/img/person_circle.svg" class="img2">
+                                </div>
+                                <div style="padding-left: 20px;">
+                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                </div>
+                            </div>
+                           
+                        </div>   
+                    </div>
+                </div>
+    
+            </div>
+
+            <footer><p>10dem © 2020</p></footer>
+
+        </div>
+        <!-- end of container -->
+        
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6f24662773.js" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <script>
+            new Chart(document.getElementById("horizontalBar"), {
+                "type": "horizontalBar",
+                "data": {
+                "labels": ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Grey"],
+                "datasets": [{
+                "label": "My First Dataset",
+                "data": [22, 33, 55, 12, 86, 23, 14],
+                "fill": false,
+                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+                "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+                "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
+                ],
+                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+                "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
+                ],
+                "borderWidth": 1
+                }]
+                },
+                "options": {
+                "scales": {
+                "xAxes": [{
+                "ticks": {
+                "beginAtZero": true
+                }
+                }]
+                }
+                }
+            });
+        </script>
+        <script>
+
+            anychart.onDocumentReady(function () {
+            // create data set on our data
+            var chartData = {
+                // title: 'Top 3 Products with Region Sales Data',
+                header: ['#', 'Florida', 'Texas', 'Arizona', 'Nevada'],
+                rows: [
+                ['Nail polish', 6814, 3054, 4376, 4229],
+                ['Eyebrow pencil', 7012, 5067, 8987, 3932],
+                ['Lipstick', 8814, 9054, 4376, 9256]
+                ]
+            };
+
+            // create column chart
+            var chart = anychart.column();
+
+            // set chart data
+            chart.data(chartData);
+
+            // turn on chart animation
+            chart.animation(true);
+
+            chart.yAxis().labels().format('${%Value}{groupsSeparator: }');
+
+            // set titles for Y-axis
+            chart.yAxis().title('Revenue');
+
+            chart
+                .labels()
+                .enabled(true)
+                .position('center-top')
+                .anchor('center-bottom')
+                .format('${%Value}{groupsSeparator: }');
+            chart.hovered().labels(false);
+
+            // turn on legend and tune it
+            chart.legend().enabled(true).fontSize(13).padding([0, 0, 20, 0]);
+
+            // interactivity settings and tooltip position
+            chart.interactivity().hoverMode('single');
+
+            chart
+                .tooltip()
+                .positionMode('point')
+                .position('center-top')
+                .anchor('center-bottom')
+                .offsetX(0)
+                .offsetY(5)
+                .titleFormat('{%X}')
+                .format('{%SeriesName} : ${%Value}{groupsSeparator: }');
+
+            // set container id for the chart
+            chart.container('container');
+
+            // initiate chart drawing
+            chart.draw();
+            });
+        
+        </script>
+        <script>
+            // create data
+            var data = [
+            ["1", 2],
+            ["2", 4],
+            ["3", 11],
+            ["4", 9]
+            ];
+                
+            // create a chart
+            chart = anychart.line();
+
+            // create a line series and set the data
+            var series = chart.line(data);
+
+            // set the container id
+            chart.container("container1");
+
+            // initiate drawing the chart
+            chart.draw();
+        </script>
+        <script>
+            // create data
+            var data = [
+            ["1", 2],
+            ["2", 4],
+            ["3", 11],
+            ["4", 9]
+            ];
+                
+            // create a chart
+            chart = anychart.line();
+
+            // create a line series and set the data
+            var series = chart.line(data);
+
+            // set the container id
+            chart.container("container2");
+
+            // initiate drawing the chart
+            chart.draw();
+        </script>
+        <script>
+            // create data
+            var data = [
+            ["1", 2],
+            ["2", 4],
+            ["3", 11],
+            ["4", 9]
+            ];
+                
+            // create a chart
+            chart = anychart.line();
+
+            // create a line series and set the data
+            var series = chart.line(data);
+
+            // set the container id
+            chart.container("container3");
+
+            // initiate drawing the chart
+            chart.draw();
+        </script>
+        <script>
+            // create data
+            var data = [
+            ["1", 2],
+            ["2", 4],
+            ["3", 11],
+            ["4", 9]
+            ];
+                
+            // create a chart
+            chart = anychart.line();
+
+            // create a line series and set the data
+            var series = chart.line(data);
+
+            // set the container id
+            chart.container("container4");
+
+            // initiate drawing the chart
+            chart.draw();
+        </script>
+        <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+        <!-- DatePicker -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+            $('.flatpickr').flatpickr({
+                
+            });
+            $('.dropdown').on('click',function(){
+                $('#Dropdown').css('display','block');
+            })
+            $('').on('click',function(){
+                $('#Dropdown').css('display','none');
+            })
+        </script>
+    </body>
+</html>

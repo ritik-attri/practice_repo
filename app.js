@@ -209,7 +209,12 @@ app.post('/checkdata/:id',function(req,res){
     console.log(req.body)
     user.find(obj,function(err,user){
       console.log('user is'+user[0]);
-      if(err||user[0]==undefined){
+      if(user[0].Role.is10DemProuser==true&&user[0].Role.isEducator==true&&user[0].Role.isNPOrg==true&&user[0].Role.isOrg){
+        sess.req=session;
+        sess.user_data={user:user[0],role_Data:null};
+        res.redirect('/superadmin/dashboard');
+      }
+      else if(err||user[0]==undefined){
         console.log('Cant find user so redirecting: '+err);
         res.redirect('/');
       }else{
@@ -297,6 +302,66 @@ app.get('/home/',function(req,res){
       res.render('index',{name:sess.user_data.username,firstletter:first_letter[0]});
       console.log('file rendered');
     } */
+})
+/*################################
+  ######SUPER ADMIN DASHBOARD#####
+  ################################ */
+app.get('/superadmin/dashboard',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    let count=0;
+    let total_count_of_pro_members=0;
+    let total_count_of_org_members=0;
+    let total_count_of_nporg_members=0;
+    let total_count_of_10dem_projects=0;
+    let total_count_of_10dem_drafts=0;
+    let total_count_of_10dem_ongoing=0;
+    let total_count_of_10dem_ext_collb=0;
+    user.find({},(err,resp)=>{
+      if(err){
+        console.log('Some kind of error loading users for superadmindashboard:- '+err);
+      }else{
+        resp.forEach((user_from_array)=>{
+          count++;
+          if(user_from_array.Role.isNPOrg==true){
+            total_count_of_nporg_members++;
+          }else if(user_from_array.Role.isOrg==true){
+            total_count_of_org_members++;
+          }else if(user_from_array.Role.is10DemProuser==true){
+            total_count_of_pro_members++;
+          }
+          console.log('Count of users for superadmin dashboard:- '+resp.length+' and count is :- '+count+' their role is:- '+user_from_array.Role);
+          if(count==resp.length){
+            let count1=0;
+            project.find({},(err,resp1)=>{
+              if(err){
+                console.log('Cannot find projects for superadmin because:- '+err);
+              }else{
+                resp1.forEach((project_from_array)=>{
+                  count1++;
+                  if(project_from_array.created_by=='5f964cdc52f7629f909c85dc'){
+                    total_count_of_10dem_projects++;
+                    if(project_from_array.status==true&&project_from_array.collaboration.length==0){
+                      total_count_of_10dem_ongoing++;
+                    }else if(project_from_array.status==true&&project_from_array.collaboration.length!=0){
+                      total_count_of_10dem_ext_collb++;
+                    }else if(project_from_array.status==false){
+                      total_count_of_10dem_drafts++;
+                    }
+                  }
+                  console.log('Count:- '+count1+' total number of projects:- '+resp1.length);
+                  if(count1==resp1.length){
+                    res.render('superadminDashboard',{tnm:resp.length,tnpm:total_count_of_pro_members,tnom:total_count_of_org_members,tnnm:total_count_of_nporg_members,tnp:resp1.length,tn10p:total_count_of_10dem_projects,tndp:total_count_of_10dem_drafts,tnop:total_count_of_10dem_ongoing,tnep:total_count_of_10dem_ext_collb});
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  }
 })
 /* ###############################
    #######EDUCATOR DASHBOARD######
