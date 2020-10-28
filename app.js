@@ -41,7 +41,7 @@ var mail=nodemailer.createTransport({
 });
 var storage = multer.diskStorage({
   destination:(req,file,cb)=>{
-    cb(null,'uploads');
+    cb(null,'./public/uploads');
   },
   filename:(req,file,cb)=>{
     cb(null,file.fieldname+'-'+Date.now())
@@ -58,6 +58,7 @@ const googleConfig={
 }
 const mongoose = require('mongoose');
 const user = require('./models/user');
+const superadminProject = require('./models/superadminProjects')
 const educatoror10dempro = require('./models/10demprooreducator');
 const PorNPORG = require('./models/PorNPORG');
 const classes = require('./models/classes');
@@ -256,6 +257,46 @@ app.post('/checkdata/:id',function(req,res){
     console.log('Only for social login');
   }
 })
+/*####################################### 
+  #########Create Project Superadmin########
+  #######################################*/
+app.get("/superadmin/create-project",(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }
+  else{
+    res.render("superadminCreateProject1")
+  }
+})
+/*####################################### 
+  ######### handing Create Project Superadmin########
+  #######################################*/
+  app.post("/superadmin/create-project",upload.single("projectCover"),(req,res)=>{
+    if(sess.user_data==undefined){
+      res.redirect('/');
+    }
+    else{
+      console.log(req.file)
+      var newProject = new superadminProject({
+        title:req.body.title,
+        summary:req.body.summary,
+        subject:req.body.subject,
+        grade:req.body.grade,
+        keywords:req.body.keywords,
+        inquiryQuestion:req.body.inquiryQuestion,
+        learningOutcome:req.body.learningOutcome,
+        learningOutcome:req.body.learningOutcome,
+        projectCover:req.file.path
+      })
+      newProject.save().then(result=>{
+        console.log("created project")
+          console.log(result)
+          res.redirect("/superadmin/dashboard")
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
+  })
 
 
 /*####################################### 
