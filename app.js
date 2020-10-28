@@ -318,6 +318,10 @@ app.get('/superadmin/dashboard',function(req,res){
     let total_count_of_10dem_drafts=0;
     let total_count_of_10dem_ongoing=0;
     let total_count_of_10dem_ext_collb=0;
+    let notifications_of_pro_members=[];
+    let notifications_of_org_members=[];
+    let notifications_of_nporg_members=[];
+    let notifications_of_free_users=[];
     user.find({},(err,resp)=>{
       if(err){
         console.log('Some kind of error loading users for superadmindashboard:- '+err);
@@ -326,10 +330,27 @@ app.get('/superadmin/dashboard',function(req,res){
           count++;
           if(user_from_array.Role.isNPOrg==true){
             total_count_of_nporg_members++;
+            console.log('Users notification:- '+user_from_array.notifications);
+            user_from_array.notifications.forEach((notification)=>{
+              notifications_of_nporg_members.push(notification);
+            })
           }else if(user_from_array.Role.isOrg==true){
             total_count_of_org_members++;
+            console.log('Users notification:- '+user_from_array.notifications);
+            user_from_array.notifications.forEach((notification)=>{
+              notifications_of_org_members.push(notification);
+            })
           }else if(user_from_array.Role.is10DemProuser==true){
             total_count_of_pro_members++;
+            console.log('Users notification:- '+user_from_array.notifications);
+            user_from_array.notifications.forEach((notification)=>{
+              notifications_of_pro_members.push(notification);
+            })
+          }else{
+            console.log('Users notification:- '+user_from_array.notifications);
+            user_from_array.notifications.forEach((notification)=>{
+              notifications_of_free_users.push(notification);
+            })
           }
           console.log('Count of users for superadmin dashboard:- '+resp.length+' and count is :- '+count+' their role is:- '+user_from_array.Role);
           if(count==resp.length){
@@ -352,7 +373,8 @@ app.get('/superadmin/dashboard',function(req,res){
                   }
                   console.log('Count:- '+count1+' total number of projects:- '+resp1.length);
                   if(count1==resp1.length){
-                    res.render('superadminDashboard',{tnm:resp.length,tnpm:total_count_of_pro_members,tnom:total_count_of_org_members,tnnm:total_count_of_nporg_members,tnp:resp1.length,tn10p:total_count_of_10dem_projects,tndp:total_count_of_10dem_drafts,tnop:total_count_of_10dem_ongoing,tnep:total_count_of_10dem_ext_collb});
+                    console.log('NOPM:- '+notifications_of_pro_members);
+                    res.render('superadminDashboard',{tnm:resp.length,tnpm:total_count_of_pro_members,tnom:total_count_of_org_members,tnnm:total_count_of_nporg_members,tnp:resp1.length,tn10p:total_count_of_10dem_projects,tndp:total_count_of_10dem_drafts,tnop:total_count_of_10dem_ongoing,tnep:total_count_of_10dem_ext_collb,noom:notifications_of_org_members,nonpm:notifications_of_nporg_members,nopm:notifications_of_pro_members,nofm:notifications_of_free_users});
                   }
                 })
               }
@@ -625,6 +647,9 @@ app.get('/orgdashboard/educators',function(req,res){
     }
   }
 })
+/*################################
+  ######ALL EDUCATORS ADMIN#######
+  ################################ */
 app.get('/all-Educators',function(req,res){
   if(sess.user_data==undefined){
     res.redirect('/');
