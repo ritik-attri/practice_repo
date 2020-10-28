@@ -421,36 +421,21 @@
                                 <p>September 2019</p>
                                 <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
                             </div>
+                            <%if(nopm.length!=0){%>
+                                <%let i=0;%>
+                                <%for(i=0;i<4;i++){%>
                             <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
                                 <div class="d-flex justify-content-between">
                                     <img src="/public/img/person_circle.svg" class="img1">
                                     <img src="/public/img/person_circle.svg" class="img2">
                                 </div>
                                 <div>
-                                    <p>Peter from Ryan International School started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                    <p><%=nopm[i].message.substr(0,125)%>......</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;"><%=nopm[i].time%></p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div>
-                                    <p>Peter Parker started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div>
-                                    <p>Peter Parker started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
-                                </div>
-                            </div>
+                                <%}%>
+                            <%}%>
                         </div>   
                     </div>
                     <div class="col-lg-5">
@@ -463,36 +448,21 @@
                                 <p>September 2019</p>
                                 <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
                             </div>
+                            <%if(noom.length!=0){%>
+                                <%let i=0;%>
+                                <%for(i=0;i<4;i++){%>
                             <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
                                 <div class="d-flex justify-content-between">
                                     <img src="/public/img/person_circle.svg" class="img1">
                                     <img src="/public/img/person_circle.svg" class="img2">
                                 </div>
                                 <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                    <p style="margin-bottom: 0px;"><%=noom[i].message.substr(0,125)%>.....</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;"><%=noom[i].time%></p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Peter from Ryan International School , Australia started collaboration with Alexa from Oxford International School, Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
-                                </div>
-                            </div>
+                                <%}%>
+                            <%}%>
                            
                         </div>   
                     </div>
@@ -509,36 +479,21 @@
                                 <p>September 2019</p>
                                 <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
                             </div>
+                            <%if(nonpm.length!=0){%>
+                                <%let i=0;%>
+                                <%for(i=0;i<4;i++){%>
                             <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
                                 <div class="d-flex justify-content-between">
                                     <img src="/public/img/person_circle.svg" class="img1">
                                     <img src="/public/img/person_circle.svg" class="img2">
                                 </div>
                                 <div>
-                                    <p>Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
+                                    <p><%=nonpm[i].message.substr(0,125)%>......</p>
+                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;"><%=nonpm[i].time%></p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div>
-                                    <p>Peter from Ryan International School , Australia started collaboration with Alexa from Oxford International School, Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">2 hours ago</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div>
-                                    <p>Ryan International School , Australia started using 10dem's "Sustainable development for environment" project</p>
-                                    <p style="padding: 5px 0;font-size: 12px;color: #707070;">13 Sep, 5:45 PM</p>
-                                </div>
-                            </div>
+                                <%}%>
+                            <%}%>
                         </div>   
                     </div>
                     <div class="col-lg-5">
@@ -551,37 +506,21 @@
                                 <p>September 2019</p>
                                 <a style="color: #FD585CCC;font-size: 14px;cursor: pointer;">View All</a>
                             </div>
+                            <%if(nofm.length!=0){%>
+                                <%let i=0;%>
+                                <%for(i=0;i<4;i++){%>
                             <div class="d-flex justify-content-left" style="padding: 20px 0 10px 0;">
                                 <div class="d-flex justify-content-between">
                                     <img src="/public/img/person_circle.svg" class="img1">
                                     <img src="/public/img/person_circle.svg" class="img2">
                                 </div>
                                 <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
+                                    <p style="margin-bottom: 0px;"><%=nofm[i].message.substr(0,125)%>.....</p>
+                                    <p style="padding: 0;font-size: 12px;color: #707070;"><%=nofm[i].time%></p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-left" style="padding: 10px 0;">
-                                <div class="d-flex justify-content-between">
-                                    <img src="/public/img/person_circle.svg" class="img1">
-                                    <img src="/public/img/person_circle.svg" class="img2">
-                                </div>
-                                <div style="padding-left: 20px;">
-                                    <p style="margin-bottom: 0px;">Peter started collaboration with Alexa from Australia on "Sustainable development for environment" project</p>
-                                    <p style="padding: 0;font-size: 12px;color: #707070;">2 hours ago</p>
-                                </div>
-                            </div>
-                           
+                                <%}%>
+                           <%}%>
                         </div>   
                     </div>
                 </div>

@@ -318,7 +318,7 @@
     
                             </div>
                             <div class="col-lg-4 pages">
-                                <p>1 - 10 of 30 items</p>
+                                <p>1 - <%if(alleducators.length<10){%><%=alleducators.length%><%}else{%><%10%><%}%> of <%=alleducators.length%> items</p>
                             </div>
                             <div class="col-lg-3 pages">
     
@@ -327,12 +327,19 @@
                                     <div class="dropdown">
                                         <img src="/public/img/downarrow.svg" style="cursor: pointer;position: relative;top: 8px;left: 8px;right: 8px;">
                                         <div class="dropdown-content" style="width: 100%;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 14px #00000029;border-radius: 6px;opacity: 1;top: 40px;min-width: 70px;">
-                                            <a href="#">1</a>
-                                            <a href="#">2</a>
-                                            <a href="#">3</a>
+                                            <%let count=0;%>
+                                            <%let i=1;%>
+                                            <%alleducators.forEach((educator)=>{%>
+                                                <%count++;%>
+                                                <%if(count>=10){%>
+                                                    <%count=0;%>
+                                                    <a href="#"><%=i%></a>
+                                                    <%i++;%>
+                                                <%}%>
+                                            <%})%>
                                         </div>
                                     </div>
-                                    <p>&nbsp;&nbsp;of 3 pages</p>
+                                    <p>&nbsp;&nbsp;of <%=i%> pages</p>
                                 </div>
                                 
                             </div>
