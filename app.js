@@ -463,6 +463,32 @@ app.get('/superadmin/dashboard',function(req,res){
     })
   }
 })
+/*#####################################
+  ##########ORG DETAILS S##############
+  ##################################### */
+  app.get('/superadmin/dashboard/orgmembership-Users',function(req,res){
+    if(sess.user_data==undefined){
+      res.redirect('/');
+    }else{
+      let all_org_users=[];
+      let count=0;
+      PorNPORG.find({},(err,resp)=>{
+        if(err){
+          console.log('Cannot find users in /superadmin/dashboard/orgmembership-Users because:- '+err);
+        }else{
+          resp.forEach((users)=>{
+            count++;
+            all_org_users.push(users);
+            console.log('Total users :- '+resp.length+' count:- '+count);
+            if(count==resp.length){
+              console.log('Data sent in /superadmin/dashboard/orgmembership-Users is:- '+all_org_users);
+              res.render('superadminOrgDetails',{orgdetails:all_org_users});
+            }
+          })
+        }
+      })
+    }
+  })
 /* ###############################
    #######EDUCATOR DASHBOARD######
    ###############################*/
