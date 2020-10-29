@@ -290,13 +290,50 @@ app.get("/superadmin/create-project",(req,res)=>{
       })
       newProject.save().then(result=>{
         console.log("created project")
-          console.log(result)
-          res.redirect("/superadmin/dashboard")
+          req.session.tempId =  result._id
+          console.log(req.session.tempId)
+          res.redirect("/superadmin/create-activity")
       }).catch(err=>{
         console.log(err)
       })
     }
   })
+
+  /*####################################### 
+  #########Create Activity Superadmin########
+  #######################################*/
+app.get("/superadmin/create-activity",(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }
+  else{
+    res.render("superadminCreateProject2")
+  }
+})
+/*################################# 
+  ###Create activity post requests## 
+  ################################# */
+
+app.post("/superadmin/create-activity",upload.array("files",4),(req,res)=>{
+      console.log(req.session.tempId)
+      var files = []
+      for(i of req.files){
+        files.push(i.path)
+      }
+      console.log(req.files)
+      var obj = {
+        activity_title: req.body.description,
+        activity_desc:req.body.Details,
+        attached_files:files
+      }
+      superadminProject.findOneAndUpdate({_id:req.session.tempId},{$push:{activity:obj}}).then(result=>{
+        console.log(result)
+        res.redirect("/superadmin/dashboard")
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+})
 
 
 /*####################################### 
@@ -1339,6 +1376,9 @@ app.post('/addproject/:id',function(req,res){
     }
   }
 })
+
+
+
 /*#################################
   ####Updating Created Project#####
   ################################# */

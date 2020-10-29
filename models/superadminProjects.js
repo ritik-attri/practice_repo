@@ -34,7 +34,20 @@ const superadminProjectSchema = Schema({
     },
     projectCover:{
         type:String
-    }
+    },
+    activity:[new mongoose.Schema({
+        activity_title:{
+            type:String,
+            required:true
+        },
+        activity_desc:{
+            type:String,
+            required:true
+        },
+        attached_files:{
+            type:Array,
+        }
+    })]
 
 })
 module.exports = mongoose.model('superadminProject', superadminProjectSchema);
