@@ -489,6 +489,29 @@ app.get('/superadmin/dashboard',function(req,res){
       })
     }
   })
+  /*##############################
+    #######FREE USER DETAILS######
+    ############################## */
+app.get('/superadmin/dashboard/free-Users',function(req,res){
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }else{
+    let all_free_users=[];
+    let count=0;
+    user.find({},(err,resp)=>{
+      resp.forEach((users)=>{
+        count++;
+        if(users.Role.is10DemProuser==false&&users.Role.isEducator==false&&users.Role.isNPOrg==false&&users.Role.isOrg==false){
+          all_free_users.push(users);
+        }
+        console.log('Count going on:- '+count+' total users:- '+resp.length);
+        if(count==resp.length){
+          res.render('superadminFreeDetails',{freedetails:all_free_users});
+        }
+      })
+    })
+  }
+})
 /* ###############################
    #######EDUCATOR DASHBOARD######
    ###############################*/
