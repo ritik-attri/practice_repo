@@ -44,6 +44,9 @@ var storage = multer.diskStorage({
     cb(null,'./public/uploads');
   },
   filename:(req,file,cb)=>{
+    // let ext = ''; 
+    // if (file.originalname.split(".").length>1) 
+    //     ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
     cb(null,file.fieldname+'-'+Date.now())
   }
 })
@@ -334,6 +337,21 @@ app.post("/superadmin/create-activity",upload.array("files",4),(req,res)=>{
         console.log(err)
       })
 })
+/*####################################### 
+  ##########Superadmin projects#############
+  #######################################*/
+  app.get("/superadmin/projects",(req,res)=>{
+    if(sess.user_data==undefined){
+      res.redirect('/');
+    }
+    else{
+      superadminProject.find({}).then(result=>{
+        console.log(result)
+        res.render("superadminProjects",{projects:result})
+      })
+    } 
+  })
+
 
 
 /*####################################### 
@@ -384,7 +402,7 @@ app.get('/home/',function(req,res){
 /*################################
   ######SUPER ADMIN DASHBOARD#####
   ################################ */
-app.get('/superadmin/dashboard',function(req,res){
+app.get('/superadmin/dashboard',async function(req,res){
   if(sess.user_data==undefined){
     res.redirect('/');
   }else{
