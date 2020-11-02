@@ -345,14 +345,44 @@ app.post("/superadmin/create-activity",upload.array("files",4),(req,res)=>{
       res.redirect('/');
     }
     else{
-      superadminProject.find({}).then(result=>{
+      superadminProject.find({"activity.activity_title":{$exists:true}}).then(result=>{
         console.log(result)
         res.render("superadminProjects",{projects:result})
       })
     } 
   })
 
+  /*####################################### 
+  ######Superadmin Draft projects##########
+  #######################################*/ 
 
+  app.get("/superadmin/draft-projects",async (req,res)=>{
+    if(sess.user_data==undefined){
+      res.redirect('/');
+    }
+    else{
+      var data = await superadminProject.find({activity:[]})
+      console.log(data)
+      res.render("superadminDrafts",{data:data})
+    }
+  })
+
+  
+  /*####################################### 
+  ##Superadmin Draft projects handling #### 
+  #######################################*/ 
+app.get("/superadmin/draft-project-preview/:id",(req,res)=>{
+  if(sess.user_data==undefined){
+    res.redirect('/');
+  }
+  else{
+    console.log(req.params)
+    superadminProject.find({_id:req.params.id}).then(result=>{
+      console.log(result)
+      res.render('superadminDraftViewProject',{data:result[0]})
+    })
+  }
+})
 
 /*####################################### 
   ############Home##################
@@ -455,7 +485,7 @@ app.get('/superadmin/dashboard',async function(req,res){
               if(err){
                 console.log('Cannot find projects for superadmin because:- '+err);
               }else{
-                resp1.forEach((project_from_array)=>{
+                resp1.forEach(async (project_from_array)=>{
                   count1++;
                   if(project_from_array.created_by=='5f964cdc52f7629f909c85dc'){
                     total_count_of_10dem_projects++;
@@ -470,7 +500,11 @@ app.get('/superadmin/dashboard',async function(req,res){
                   console.log('Count:- '+count1+' total number of projects:- '+resp1.length);
                   if(count1==resp1.length){
                     console.log('NOPM:- '+notifications_of_pro_members);
-                    res.render('superadminDashboard',{tnm:resp.length,tnpm:total_count_of_pro_members,tnom:total_count_of_org_members,tnnm:total_count_of_nporg_members,tnp:resp1.length,tn10p:total_count_of_10dem_projects,tndp:total_count_of_10dem_drafts,tnop:total_count_of_10dem_ongoing,tnep:total_count_of_10dem_ext_collb,noom:notifications_of_org_members,nonpm:notifications_of_nporg_members,nopm:notifications_of_pro_members,nofm:notifications_of_free_users});
+                    var Sprojects = await superadminProject.find({"activity.activity_title":{$exists:true}})
+                    var drafts= await superadminProject.find({activity:[]})
+                    console.log("Draft projects are",drafts)
+                    console.log("Superadminprojects are",Sprojects)
+                    res.render('superadminDashboard',{tnm:resp.length,tnpm:total_count_of_pro_members,tnom:total_count_of_org_members,tnnm:total_count_of_nporg_members,tnp:resp1.length,tn10p:total_count_of_10dem_projects,tndp:total_count_of_10dem_drafts,tnop:total_count_of_10dem_ongoing,tnep:total_count_of_10dem_ext_collb,noom:notifications_of_org_members,nonpm:notifications_of_nporg_members,nopm:notifications_of_pro_members,nofm:notifications_of_free_users,projects:Sprojects,drafts:drafts});
                   }
                 })
               }

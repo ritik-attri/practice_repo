@@ -232,7 +232,7 @@
                     <div class="col-lg-3">
                         <div class="d-flex wholediv">
                             <div class="stats">
-                                <h1><%=tn10p%></h1>
+                                <h1><%=projects.length%></h1>
                                 <p>10dem Projects</p>
                             </div>
                             <div onclick="window.location.href='/superadmin/projects'" class="arrow-adjust">
@@ -243,10 +243,10 @@
                     <div class="col-lg-3">
                         <div class="d-flex wholediv">
                             <div class="stats">
-                                <h1><%=tndp%></h1>
+                                <h1><%=drafts.length%></h1>
                                 <p>Projects In Draft</p>
                             </div>
-                            <div class="arrow-adjust">
+                            <div onclick="window.location.href='/superadmin/draft-projects'" class="arrow-adjust">
                                 <img src="/public/img/arrow-right.svg">
                             </div>
                         </div>
